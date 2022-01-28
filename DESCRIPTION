@@ -2,7 +2,7 @@ Package: BayesDLMfMRI
 Type: Package
 Title: Statistical analysis for task-based fMRI data
 Version: 0.01
-Date: 2022-01-24
+Date: 2022-01-27
 Author: Johnatan Cardona J
 Maintainer: Johnatan Cardona J <jcardonj@unal.edu.co>
 Description: R package for task-based fMRI statistical analysis
