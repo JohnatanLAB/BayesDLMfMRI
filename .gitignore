@@ -106,13 +106,13 @@ tests/*
 
 
 # temporary removed
-R/load_data.R
+R\load_data.R
 
 
-R/ffdAverageGroupVoxelFEST.R
-R/ffdAverageGroupVoxelFFBS.R
-R/ffdAverageGroupVoxelFSTS.R
+R\ffdAverageGroupVoxelFEST.R
+R\ffdAverageGroupVoxelFFBS.R
+R\ffdAverageGroupVoxelFSTS.R
 
-R/ffdAverageGroupEvidenceFEST.R
-R/ffdAverageGroupEvidenceFFBS.R
-R/ffdAverageGroupEvidenceFSTS.R
+R\ffdAverageGroupEvidenceFEST.R
+R\ffdAverageGroupEvidenceFFBS.R
+R\ffdAverageGroupEvidenceFSTS.R
