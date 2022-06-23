@@ -6,6 +6,11 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // Group_Functional_Backwards_Sampling
 Rcpp::List Group_Functional_Backwards_Sampling(const arma::mat& ffd1, const arma::mat& Cova, const double m0In, const arma::mat& c0In, const double S0In, const arma::mat& beta0In, const double nt0In, const int flag1, const int NIn, const int NS, const int Nsimu, const int CUTpos);
 RcppExport SEXP _BayesDLMfMRI_Group_Functional_Backwards_Sampling(SEXP ffd1SEXP, SEXP CovaSEXP, SEXP m0InSEXP, SEXP c0InSEXP, SEXP S0InSEXP, SEXP beta0InSEXP, SEXP nt0InSEXP, SEXP flag1SEXP, SEXP NInSEXP, SEXP NSSEXP, SEXP NsimuSEXP, SEXP CUTposSEXP) {

@@ -8,3 +8,8 @@
 * Run R CMD check to check the package tarball.
 
 Read "Writing R Extensions" for more information.
+
+try(roxygen2::roxygenize(load_code = sourceDir), silent = TRUE)
+pkgbuild::compile_dll()
+roxygen2::roxygenize()
+devtools::build()
