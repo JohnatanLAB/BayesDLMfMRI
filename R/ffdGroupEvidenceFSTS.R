@@ -41,7 +41,7 @@ ffdGroupEvidenceFSTS <- function(ffdGroup, covariates, m0=0, Cova=100,
     ffd.out <- pbapply::pbapply(posiffd, 1, ffdGroupVoxelFSTS, ffdGroup, covariates, m0, Cova,
                                 delta, S0, n0, N1, Nsimu1, r1, Test, Cutpos, cl = Ncores)
     
-    #number of tests from the output of ffdIndividualVoxelFFBS  (Joint, marginal and LTT)
+    #number of tests from the output of ffdsingleVoxelFFBS  (Joint, marginal and LTT)
     Ntest <- 3
     vol.evidence <- list()
     

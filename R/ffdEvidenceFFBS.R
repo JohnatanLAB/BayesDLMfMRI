@@ -103,9 +103,9 @@ ffdEvidenceFFBS = function(ffdc, covariates, m0=0, Cova=100,
 
     #COMPUTING THE EVIDENCE FOR BRAIN ACTIVATION: VOXEL-WISE ANALYSIS
     set.seed(seed)
-    ffd.out = pbapply::pbapply(posiffd1, 1, ffdIndividualVoxelFFBS, covariates, ffdc, m0, Cova,
+    ffd.out = pbapply::pbapply(posiffd1, 1, ffdsingleVoxelFFBS, covariates, ffdc, m0, Cova,
                     delta, S0, n0, N1, Nsimu1, Cutpos1, Min.vol = perVol*max(ffdc), r1, cl = Ncores)
-    #number of tests from the output of ffdIndividualVoxelFFBS  (Joint, marginal and LTT)
+    #number of tests from the output of ffdsingleVoxelFFBS  (Joint, marginal and LTT)
     Ntest <- 3
     vol.evidence <- list()
     

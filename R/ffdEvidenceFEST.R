@@ -143,7 +143,7 @@ ffdEvidenceFEST = function(ffdc, covariates, m0=0, Cova=100,
   if(Test == "LTT"){
     #COMPUTING THE EVIDENCE FOR BRAIN ACTIVATION: VOXEL-WISE ANALYSIS
     set.seed(seed)
-    ffd.out = pbapply::pbapply(posiffd1, 1, ffdIndividualVoxelFEST, covariates, ffdc, m0, Cova,
+    ffd.out = pbapply::pbapply(posiffd1, 1, ffdSingleVoxelFEST, covariates, ffdc, m0, Cova,
                                delta, S0, n0, N1, Nsimu1, Cutpos1, Min.vol = perVol*max(ffdc), r1, Test, cl = Ncores)
     
     
@@ -166,7 +166,7 @@ ffdEvidenceFEST = function(ffdc, covariates, m0=0, Cova=100,
   if(Test == "JointTest"){
     #COMPUTING THE EVIDENCE FOR BRAIN ACTIVATION: VOXEL-WISE ANALYSIS
     set.seed(seed)
-    ffd.out = pbapply::pbapply(posiffd1, 1, ffdIndividualVoxelFEST, covariates, ffdc, m0, Cova,
+    ffd.out = pbapply::pbapply(posiffd1, 1, ffdSingleVoxelFEST, covariates, ffdc, m0, Cova,
                                delta, S0, n0, N1, Nsimu1, Cutpos1, Min.vol = perVol*max(ffdc), r1, Test, cl = Ncores)
     #number of tests from the output of ffdIndividualVoxelLTT  (Joint and marginal)
     Ntest <- 2

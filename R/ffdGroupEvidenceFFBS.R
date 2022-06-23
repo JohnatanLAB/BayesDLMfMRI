@@ -44,7 +44,7 @@ ffdGroupEvidenceFFBS <- function(ffdGroup, covariates, m0=0, Cova=100,
 
   # TODO parece que la variable no es requerida
 
-  #number of tests from the output of ffdIndividualVoxelFFBS  (Joint, marginal and LTT)
+  #number of tests from the output of ffdsingleVoxelFFBS  (Joint, marginal and LTT)
   Ntest <- 3
   vol.evidence <- list()
   
