@@ -10,7 +10,7 @@ License: GPL-2
 Imports: Rcpp (>= 1.0.4), Rdpack
 RdMacros: Rdpack
 LinkingTo: pbapply, Rcpp, RcppArmadillo, RcppDist
-RoxygenNote: 7.2.0
+RoxygenNote: 7.2.1
 Encoding: UTF-8
 Suggests: 
     rmarkdown,

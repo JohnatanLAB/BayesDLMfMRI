@@ -1,7 +1,7 @@
 #' @import pbapply
 
-#' @name ffdGroupEvidenceFEST
-#' @title ffdGroupEvidenceFEST
+#' @name ffdGroupEvidenceFETS
+#' @title ffdGroupEvidenceFETS
 #' @description
 #' This function can be used to build activation maps for task-based fMRI group data
 #' @references
@@ -30,7 +30,7 @@
 #' "Join" distribution. The remaining activation maps are those associated with the marginal distribution.
 #' @examples TODO
 #' @export
-ffdGroupEvidenceFEST <- function(ffdGroup, covariates, m0=0, Cova=100,
+ffdGroupEvidenceFETS <- function(ffdGroup, covariates, m0=0, Cova=100,
                                 delta = 0.95, S0 = 1, n0 = 1, N1 = FALSE, Nsimu1=100, Cutpos=30, r1, Test, mask, Ncores = NULL){
   
   if(N1==FALSE){N1 = dim(covariates)[1]}
@@ -41,7 +41,7 @@ ffdGroupEvidenceFEST <- function(ffdGroup, covariates, m0=0, Cova=100,
   
   
   if(Test == "LTT"){
-    ffd.out <- pbapply::pbapply(posiffd, 1, ffdGroupVoxelFEST, ffdGroup, covariates, m0, Cova,
+    ffd.out <- pbapply::pbapply(posiffd, 1, ffdGroupVoxelFETS, ffdGroup, covariates, m0, Cova,
                                 delta, S0, n0, N1, Nsimu1, r1, Test, Cutpos, cl = Ncores)
     
     vol.evidence <- list()
@@ -62,7 +62,7 @@ ffdGroupEvidenceFEST <- function(ffdGroup, covariates, m0=0, Cova=100,
   }
   if(Test == "Joint"){
     
-    ffd.out = pbapply::pbapply(posiffd, 1, ffdGroupVoxelFEST, ffdGroup, covariates, m0, Cova,
+    ffd.out = pbapply::pbapply(posiffd, 1, ffdGroupVoxelFETS, ffdGroup, covariates, m0, Cova,
                                delta, S0, n0, N1, Nsimu1, r1, Test, Cutpos, cl = Ncores)
     
     Ntest <- 2

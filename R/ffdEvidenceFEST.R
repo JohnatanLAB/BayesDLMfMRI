@@ -1,7 +1,7 @@
 #' @import pbapply
 
 
-#' @name ffdEvidenceFEST
+#' @name ffdEvidenceFETS
 #' @title ffdEvidenceFETS
 #' @description
 #' This function can be used to build activation maps for task-based fMRI data. 
@@ -28,11 +28,11 @@
 #' @return It returns a list of the type res[[p]][x,y,z], where p represents the column position in
 #' the covariates matrix and [x,y,z] represent the voxel position in the brain image.
 #' @examples
-#' ffdEvidenceFEST(ffdc = fMRI.data, covariates = Covariates,
+#' ffdEvidenceFETS(ffdc = fMRI.data, covariates = Covariates,
 #'                 m0 = 0, Cova = 100, delta = 0.95, S0 = 1, n0 = 1, Nsimu1 = 100, Cutpos1 = 30,
 #'                 r1 = 1, Test = "LTT", Ncores = 20)
 #' @export
-ffdEvidenceFEST = function(ffdc, covariates, m0=0, Cova=100,
+ffdEvidenceFETS = function(ffdc, covariates, m0=0, Cova=100,
                            delta=0.95, S0=1, n0=1, N1=FALSE, 
                            Nsimu1 = 100, Cutpos1=30, r1 = 1, 
                            perVol = 0.10, Test = "LTT", Ncores = NULL, seed=NULL){
@@ -143,7 +143,7 @@ ffdEvidenceFEST = function(ffdc, covariates, m0=0, Cova=100,
   if(Test == "LTT"){
     #COMPUTING THE EVIDENCE FOR BRAIN ACTIVATION: VOXEL-WISE ANALYSIS
     set.seed(seed)
-    ffd.out = pbapply::pbapply(posiffd1, 1, ffdSingleVoxelFEST, covariates, ffdc, m0, Cova,
+    ffd.out = pbapply::pbapply(posiffd1, 1, ffdSingleVoxelFETS, covariates, ffdc, m0, Cova,
                                delta, S0, n0, N1, Nsimu1, Cutpos1, Min.vol = perVol*max(ffdc), r1, Test, cl = Ncores)
     
     
@@ -166,7 +166,7 @@ ffdEvidenceFEST = function(ffdc, covariates, m0=0, Cova=100,
   if(Test == "JointTest"){
     #COMPUTING THE EVIDENCE FOR BRAIN ACTIVATION: VOXEL-WISE ANALYSIS
     set.seed(seed)
-    ffd.out = pbapply::pbapply(posiffd1, 1, ffdSingleVoxelFEST, covariates, ffdc, m0, Cova,
+    ffd.out = pbapply::pbapply(posiffd1, 1, ffdSingleVoxelFETS, covariates, ffdc, m0, Cova,
                                delta, S0, n0, N1, Nsimu1, Cutpos1, Min.vol = perVol*max(ffdc), r1, Test, cl = Ncores)
     #number of tests from the output of ffdIndividualVoxelLTT  (Joint and marginal)
     Ntest <- 2

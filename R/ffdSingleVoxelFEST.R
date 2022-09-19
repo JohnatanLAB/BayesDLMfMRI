@@ -1,7 +1,7 @@
 
 
 
-ffdSingleVoxelFEST <- function(posi.ffd, covariates, ffdc, m0, Cova, delta, S0, n0, N1, Nsimu1, Cutpos1, Min.vol, r1, Test){
+ffdSingleVoxelFETS <- function(posi.ffd, covariates, ffdc, m0, Cova, delta, S0, n0, N1, Nsimu1, Cutpos1, Min.vol, r1, Test){
   
   
   if(r1 == 0){

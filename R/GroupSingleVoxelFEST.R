@@ -1,7 +1,7 @@
-#' @name GroupSingleVoxelFEST
-#' @title GroupSingleVoxelFEST
+#' @name GroupSingleVoxelFETS
+#' @title GroupSingleVoxelFETS
 #' @description
-#' descripcion de la funcion GroupSingleVoxelFEST TODO
+#' descripcion de la funcion GroupSingleVoxelFETS TODO
 #' @details
 #' detalles de uso de la funcion TODO
 #' @param posi.ffd  TODO por definir
@@ -18,10 +18,10 @@
 #' @param r1 a positive integer number that defines the distance from every voxel with its most distant neighbor. This value determines the size of the cluster. The users can set a range of different r values: r = 0, 1, 2, 3, 4, which leads to q = 1, 7, 19, 27, 33, where q is the size of the cluster.
 #' @param Test test type either "LTT"or "JointTest"
 #' @param Ncores a postive integer indicating the number of threads to be used
-#' @return Produces some usefull outputs from a single voxel analysis related to the FEST algorithm
+#' @return Produces some usefull outputs from a single voxel analysis related to the FETS algorithm
 #' @examples TODO
 #' @export
-GroupSingleVoxelFEST <- function(posi.ffd, DatabaseGroup, covariates, m0, Cova, delta, S0, n0, N1, Nsimu1, r1, Test, Cutpos){
+GroupSingleVoxelFETS <- function(posi.ffd, DatabaseGroup, covariates, m0, Cova, delta, S0, n0, N1, Nsimu1, r1, Test, Cutpos){
   
   if(N1==FALSE){N1 = dim(covariates)[1]}
   

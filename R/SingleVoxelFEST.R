@@ -1,6 +1,6 @@
 
-#' @name IndividualVoxelFEST
-#' @title IndividualVoxelFEST
+#' @name IndividualVoxelFETS
+#' @title IndividualVoxelFETS
 #' @description
 #' This function is used to perform a fitting analysis for single voxels
 #' @details
@@ -27,7 +27,7 @@
 #'  and a measure to examine the goodness of fit of the model (100 ∗ |Y[i,j,k]_t − \hat{Y}[i,j,k]_t |/ \hat{Y}[i,j,k]_t ) for that particular voxel (FitnessV).
 #' @examples TODO
 #' @export
-SingleVoxelFEST <- function(posi.ffd, covariates, ffdc, m0, Cova, delta, S0, n0, N1, Nsimu1, Cutpos1, Min.vol, r1, Test){
+SingleVoxelFETS <- function(posi.ffd, covariates, ffdc, m0, Cova, delta, S0, n0, N1, Nsimu1, Cutpos1, Min.vol, r1, Test){
   
   
   if(r1 == 0){
