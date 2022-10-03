@@ -6,10 +6,10 @@
 #' @description
 #' This function can be used to build activation maps for task-based fMRI data. 
 #' @references
-#' \insertRef{jimenez_bayesdlmfmri_2021}{BayesDLMfMRI}
+#' \insertRef{CARDONAJIMENEZ2021107297}{BayesDLMfMRI}
 #' @details
-#' Every voxel from the 4D array image is clustered with its nearest neighbors. There are as many clusters as voxels in the image. Then, activation maps are obtained by fitting a multivariate dynamic linear model on every cluster of voxels. The resulting activation evidence measure for every voxel is obtained by using the Forward State Trajectories Sampler (FSTS) algorithm \insertCite{jimenez_bayesdlmfmri_2021}{BayesDLMfMRI}.
-#' @param ffdc  a 4D array (ffdc[i,j,k,t]) that contains the sequence of MRI images that are meant to be analyzed. (i,j,k) define the position of the voxel observed at time t.
+#' Every voxel from the 4D array image is clustered with its nearest neighbors. There are as many clusters as voxels in the image. Then, activation maps are obtained by fitting a multivariate dynamic linear model on every cluster of voxels. The resulting activation evidence measure for every voxel is obtained by using the Forward Estimated Trajectories Sampler (FETS) algorithm developed in \insertCite{CARDONAJIMENEZ2021107297}{BayesDLMfMRI}.
+#' @param ffdc  a 4D array (ffdc[i,j,k,t]) that contains the sequence of MRI images that are meant to be analyzed. (i,j,k) define the position of the observed voxel at time t.
 #' @param covariates a data frame or matrix whose columns contain the covariates related to the expected BOLD response obtained from the experimental setup
 #' @param m0 the constant prior mean value for the covariates parameters and common to all voxels within every neighborhood at t=0 (m=0 is the default value when no prior information is available). For the case of available prior information, m0 can be defined as a pXr matrix, where p is the number of columns in the covariates object and r is the cluster size
 #' @param Cova a positive constant that defines the prior variances for the covariates parameters at t=0 (Cova=100 is the default value when no prior information is available). For the case of available prior information, Cova0 can be defined as a pXp matrix, where p is the number of columns in the covariates object
