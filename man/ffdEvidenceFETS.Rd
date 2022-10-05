@@ -23,7 +23,7 @@ ffdEvidenceFETS(
 )
 }
 \arguments{
-\item{ffdc}{a 4D array (ffdc[i,j,k,t]) that contains the sequence of MRI images that are meant to be analyzed. (i,j,k) define the position of the voxel observed at time t.}
+\item{ffdc}{a 4D array (ffdc[i,j,k,t]) that contains the sequence of MRI images that are meant to be analyzed. (i,j,k) define the position of the observed voxel at time t.}
 
 \item{covariates}{a data frame or matrix whose columns contain the covariates related to the expected BOLD response obtained from the experimental setup}
 
@@ -61,7 +61,7 @@ the covariates matrix and [x,y,z] represent the voxel position in the brain imag
 This function can be used to build activation maps for task-based fMRI data.
 }
 \details{
-Every voxel from the 4D array image is clustered with its nearest neighbors. There are as many clusters as voxels in the image. Then, activation maps are obtained by fitting a multivariate dynamic linear model on every cluster of voxels. The resulting activation evidence measure for every voxel is obtained by using the Forward State Trajectories Sampler (FSTS) algorithm \insertCite{jimenez_bayesdlmfmri_2021}{BayesDLMfMRI}.
+Every voxel from the 4D array image is clustered with its nearest neighbors. There are as many clusters as voxels in the image. Then, activation maps are obtained by fitting a multivariate dynamic linear model on every cluster of voxels. The resulting activation evidence measure for every voxel is obtained by using the Forward Estimated Trajectories Sampler (FETS) algorithm developed in \insertCite{CARDONAJIMENEZ2021107297}{BayesDLMfMRI}.
 }
 \examples{
 ffdEvidenceFETS(ffdc = fMRI.data, covariates = Covariates,
@@ -69,5 +69,5 @@ ffdEvidenceFETS(ffdc = fMRI.data, covariates = Covariates,
                 r1 = 1, Test = "LTT", Ncores = 20)
 }
 \references{
-\insertRef{jimenez_bayesdlmfmri_2021}{BayesDLMfMRI}
+\insertRef{CARDONAJIMENEZ2021107297}{BayesDLMfMRI}
 }
