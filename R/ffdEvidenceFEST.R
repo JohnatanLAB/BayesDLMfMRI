@@ -28,6 +28,7 @@
 #' @return It returns a list of the type res[[p]][x,y,z], where p represents the column position in
 #' the covariates matrix and [x,y,z] represent the voxel position in the brain image.
 #' @examples
+#' See \insertCite{cardona2021bayesdlmfmri}{BayesDLMfMRI} for detailed examples of the use of this package.
 #' ffdEvidenceFETS(ffdc = fMRI.data, covariates = Covariates,
 #'                 m0 = 0, Cova = 100, delta = 0.95, S0 = 1, n0 = 1, Nsimu1 = 100, Cutpos1 = 30,
 #'                 r1 = 1, Test = "LTT", Ncores = 20)
