@@ -64,10 +64,9 @@ This function can be used to build activation maps for task-based fMRI data.
 Every voxel from the 4D array image is clustered with its nearest neighbors. There are as many clusters as voxels in the image. Then, activation maps are obtained by fitting a multivariate dynamic linear model on every cluster of voxels. The resulting activation evidence measure for every voxel is obtained by using the Forward Estimated Trajectories Sampler (FETS) algorithm developed in \insertCite{CARDONAJIMENEZ2021107297}{BayesDLMfMRI}.
 }
 \examples{
-ffdEvidenceFETS(ffdc = fMRI.data, covariates = Covariates,
-                m0 = 0, Cova = 100, delta = 0.95, S0 = 1, n0 = 1, Nsimu1 = 100, Cutpos1 = 30,
-                r1 = 1, Test = "LTT", Ncores = 20)
+See \insertCite{cardona2021bayesdlmfmri}{BayesDLMfMRI} for detailed examples of the use of this package.
 }
 \references{
 \insertRef{CARDONAJIMENEZ2021107297}{BayesDLMfMRI}
+\insertRef{cardona2021bayesdlmfmri}{BayesDLMfMRI}
 }
