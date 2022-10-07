@@ -23,7 +23,7 @@
 #' @param perVol a positive numeric variable
 #' @param Ncores a postive integer indicating the number of threads or cores to be used in the computation of the activation maps.
 #' @return  It returns a list of the form [[k]][p,x,y,z], where k defines the type of test (k = 1 for "Marginal", k = 2 for "JointTest", and k = 3 for "LTT"), p represents the column position in the covariates matrix and x,y,z represent the voxel position in the brain image.
-#' @example 
+#' @examples 
 #' ffdEvidenceFFBS(ffdc = fMRI.data, covariates = covariables, 
 #' m0 = 0, Cova = 100, delta = 0.95, S0 = 1,n0 = 1, Nsimu1 = 100, Cutpos1 = 30,
 #' r1 = 1, Ncores = 15)
