@@ -25,15 +25,15 @@ ffdEvidenceFETS(
 \arguments{
 \item{ffdc}{a 4D array (ffdc[i,j,k,t]) that contains the sequence of MRI images that are meant to be analyzed. (i,j,k) define the position of the observed voxel at time t.}
 
-\item{covariates}{a data frame or matrix whose columns contain the covariates related to the expected BOLD response obtained from the experimental setup}
+\item{covariates}{a data frame or matrix whose columns contain the covariates related to the expected BOLD response obtained from the experimental setup.}
 
-\item{m0}{the constant prior mean value for the covariates parameters and common to all voxels within every neighborhood at t=0 (m=0 is the default value when no prior information is available). For the case of available prior information, m0 can be defined as a pXr matrix, where p is the number of columns in the covariates object and r is the cluster size}
+\item{m0}{the constant prior mean value for the covariates parameters and common to all voxels within every neighborhood at t=0 (m=0 is the default value when no prior information is available). For the case of available prior information, m0 can be defined as a pXr matrix, where p is the number of columns in the covariates object and r is the cluster size.}
 
-\item{Cova}{a positive constant that defines the prior variances for the covariates parameters at t=0 (Cova=100 is the default value when no prior information is available). For the case of available prior information, Cova0 can be defined as a pXp matrix, where p is the number of columns in the covariates object}
+\item{Cova}{a positive constant that defines the prior variances for the covariates parameters at t=0 (Cova=100 is the default value when no prior information is available). For the case of available prior information, Cova0 can be defined as a pXp matrix, where p is the number of columns in the covariates object.}
 
-\item{delta}{a discount factor related to the evolution variances. Recommended values between 0.85<delta<1. delta=1 will yield results similar to the classical general linear model}
+\item{delta}{a discount factor related to the evolution variances. Recommended values between 0.85<delta<1. delta=1 will yield results similar to the classical general linear model.}
 
-\item{S0}{prior covariance structure among voxels within every cluster at t=0, S0=1 is the default value when no prior information is available and defines an rXr identity matrix. For the case of available prior information, S0 can be defined as an rXr matrix, where r is the common number of voxels in every cluster}
+\item{S0}{prior covariance structure among voxels within every cluster at t=0, S0=1 is the default value when no prior information is available and defines an rXr identity matrix. For the case of available prior information, S0 can be defined as an rXr matrix, where r is the common number of voxels in every cluster.}
 
 \item{n0}{a positive hyperparameter of the prior distribution for the covariance matrix S0 at t=0 (n=1 is the default value when no prior information is available). For the case of available prior information, n0 can be set as n0=np, where np is the number of MRI images in the pilot sample.}
 
@@ -45,8 +45,7 @@ ffdEvidenceFETS(
 
 \item{r1}{a positive integer number that defines the distance from every voxel with its most distant neighbor. This value determines the size of the cluster. The users can set a range of different r values: r = 0, 1, 2, 3, 4, which leads to q = 1, 7, 19, 27, 33, where q is the size of the cluster.}
 
-\item{perVol}{helps to define a threshold for the voxels considered in
-the analysis. For example, Min.vol = 0.10 means that all the voxels with values
+\item{perVol}{helps to define a threshold for the voxels considered in the analysis. For example, Min.vol = 0.10 means that all the voxels with values
 below to max(ffdc)*perVol can be considered irrelevant and discarded from the analysis.}
 
 \item{Test}{test type either "LTT" (Average cluster effect) or "JointTest" (Joint effect).}
