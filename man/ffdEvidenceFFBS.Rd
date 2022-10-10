@@ -32,7 +32,7 @@ ffdEvidenceFFBS(
 
 \item{delta}{a discount factor related to the evolution variances. Recommended values between 0.85<delta<1. delta=1 will yield results similar to the classical general linear model.}
 
-\item{S0}{prior covariance structure among voxels within every cluster at t=0, S0=1 is the default value when no prior information is available and defines an rXr identity matrix. For the case of available prior information, S0 can be defined as an rXr matrix, where r is the common number of voxels in every cluster.}
+\item{S0}{prior covariance structure among voxels within every cluster at t=0. S0=1 is the default value when no prior information is available and defines an rXr identity matrix. For the case of available prior information, S0 can be defined as an rXr matrix, where r is the common number of voxels in every cluster.}
 
 \item{n0}{a positive hyperparameter of the prior distribution for the covariance matrix S0 at t=0 (n=1 is the default value when no prior information is available). For the case of available prior information, n0 can be set as n0=np, where np is the number of MRI images in the pilot sample.}
 
@@ -56,12 +56,13 @@ It returns a list of the form res[[k]][p,x,y,z], where k defines the type of tes
 This function can be used to build activation maps for task-based fMRI data.
 }
 \details{
-Every voxel from the 4D array image is clustered with its nearest neighbors. There are as many clusters as voxels in the image. Then, activation maps are obtained by fitting a multivariate dynamic linear model on every cluster of voxels. The resulting activation evidence measure for every voxel is obtained by using the Forward filtering backward sampling (FFBS) algorithm developed in \insertCite{CARDONAJIMENEZ2021107297}{BayesDLMfMRI}.
+Every voxel from the 4D array image is clustered with its nearest neighbors. There are as many clusters as voxels in the image. Then, activation maps are obtained by fitting a multivariate dynamic linear model on every cluster of voxels. The resulting activation evidence measure for every voxel is obtained by using the Forward filtering backward sampling (FFBS) algorithm. To deeply understand the method implemented in this package, a reading of \insertCite{CARDONAJIMENEZ2021107297}{BayesDLMfMRI} and \insertCite{cardona2021bayesdlmfmri}{BayesDLMfMRI} is mandatory.
 }
 \examples{
 See \insertCite{cardona2021bayesdlmfmri}{BayesDLMfMRI} for detailed examples of the use of this package.
 }
 \references{
 \insertRef{CARDONAJIMENEZ2021107297}{BayesDLMfMRI}
+
 \insertRef{cardona2021bayesdlmfmri}{BayesDLMfMRI}
 }
