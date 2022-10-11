@@ -109,10 +109,10 @@ tests/*
 R\load_data.R
 
 
-R\ffdAverageGroupVoxelFEST.R
-R\ffdAverageGroupVoxelFFBS.R
-R\ffdAverageGroupVoxelFSTS.R
+R/ffdAverageGroupVoxelFETS.R
+R/ffdAverageGroupVoxelFFBS.R
+R/ffdAverageGroupVoxelFSTS.R
 
-R\ffdAverageGroupEvidenceFEST.R
-R\ffdAverageGroupEvidenceFFBS.R
-R\ffdAverageGroupEvidenceFSTS.R
+R/ffdAverageGroupEvidenceFETS.R
+R/ffdAverageGroupEvidenceFFBS.R
+R/ffdAverageGroupEvidenceFSTS.R
