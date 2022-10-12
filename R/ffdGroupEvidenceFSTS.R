@@ -6,29 +6,29 @@
 #' This function can be used to build activation maps for group task-based fMRI data.
 #' @details
 #' A multivariate dynamic linear model is fitted in the same fashion as at the individual level for every subject in the sample. 
-#' However, at this stage, the posterior distributions from every subject are combined to build a single one, 
-#' which is then employed to compute the activation evidence maps for the group of subjects by using the Forward State Trajectories Sampler (FSTS) algorithm \insertCite{jimenez_bayesdlmfmri_2021}{BayesDLMfMRI}.
-#' @param ffdGroup  List of N elements, being each of them a 4D array (ffdc[i,j,k,t]) that contains the sequence of MRI images related to each of the N subjects in the sample.
+#' However, at this stage, the posterior distributions from all the subjects are combined to build a single one, 
+#' which is then employed to compute the activation evidence maps for the group using the Forward State Trajectories Sampler (FSTS) algorithm To deeply understand the method implemented in this package, a reading of \insertCite{CARDONAJIMENEZ2021107297}{BayesDLMfMRI} and \insertCite{cardona2021bayesdlmfmri}{BayesDLMfMRI} is mandatory.
+#' @param ffdGroup list of N elements, each being a 4D array (ffdc[i,j,k,t]) that contains the sequence of MRI images related to each of the N subjects in the sample.
 #' @param covariates a data frame or matrix whose columns contain the covariates related to the expected BOLD response obtained from the experimental setup
-#' @param m0 the constant prior mean value for the covariates parameters and common to all voxels within every neighborhood at t=0 (m=0 is the default value when no prior information is available). For the case of available prior information, m0 can be defined as a pXr matrix, where p is the number of columns in the covariates object and r is the cluster size
-#' @param Cova a positive constant that defines the prior variances for the covariates parameters at t=0 (Cova=100 is the default value when no prior information is available). For the case of available prior information, Cova0 can be defined as a pXp matrix, where p is the number of columns in the covariates object
-#' @param delta a discount factor related to the evolution variances. Recommended values between 0.85<delta<1. delta=1 will yield results similar to the classical general linear model
-#' @param S0 prior covariance structure between pair of voxels within every cluster at t=0, S0=1 is the default value when no prior information is available and defines an rXr identity matrix. For the case of available prior information, S0 can be defined as an rXr matrix, where r is the common number of voxels in every cluster
+#' @param m0 the constant prior mean value for the covariates parameters and common to all voxels within every neighborhood at t=0 (m=0 is the default value when no prior information is available). For the case of available prior information, m0 can be defined as a pXr matrix, where p is the number of columns in the covariates object and r is the cluster size.
+#' @param Cova a positive constant that defines the prior variances for the covariates parameters at t=0 (Cova=100 is the default value when no prior information is available). For the case of available prior information, Cova0 can be defined as a pXp matrix, where p is the number of columns in the covariates object.
+#' @param delta a discount factor related to the evolution variances. Recommended values between 0.85<delta<1. delta=1 will yield results similar to the classical general linear model.
+#' @param S0 prior covariance structure between pair of voxels within every cluster at t=0. S0=1 is the default value when no prior information is available and defines an rXr identity matrix. For the case of available prior information, S0 can be defined as an rXr matrix, where r is the common number of voxels in every cluster.
 #' @param n0 a positive hyperparameter of the prior distribution for the covariance matrix S0 at t=0 (n=1 is the default value when no prior information is available). For the case of available prior information, n0 can be set as n0=np, where np is the number of MRI images in the pilot sample.
 #' @param N1 is the number of images (2<N1<T) from the ffdc array employed in the model fitting.N1=NULL (or equivalently N1=T) is its default value, taking all the images in the ffdc array for the fitting process.
 #' @param Nsimu1  is the number of simulated on-line trajectories related to the state parameters. These simulated curves are later employed to compute the posterior probability of voxel activation.
 #' @param Cutpos a cutpoint time from where the on-line trajectories begin. This parameter value is related to an approximation from a t-student distribution to a normal distribution. Values equal to or greater than 30 are recommended (30<Cutpos1<T).  
 #' @param r1 a positive integer number that defines the distance from every voxel with its most distant neighbor. This value determines the size of the cluster. The users can set a range of different r values: r = 0, 1, 2, 3, 4, which leads to q = 1, 7, 19, 27, 33, where q is the size of the cluster.
 #' @param mask 3D array that works as a brain of reference (MNI atlas) for the group analysis.
-#' @param Test test type either "LTT"or "JointTest"
 #' @param Ncores a postive integer indicating the number of threads or cores to be used in the computation of the activation maps.
 #' @return It returns a list of the form [[k]][p,x,y,z], where k defines the type of test
-#'  (k = 1 for "Marginal", k = 2 for "JointTest", and k = 3 for "LTT"), p represents the column 
+#'  (k = 1 for Marginal effect, k = 2 for Joint effect, and k = 3 for Average cluster effect), p represents the column 
 #'  position in the covariates matrix and x,y,z represent the voxel position in the brain image.
-#' @examples TODO
+#' @examples
+#' See \insertCite{cardona2021bayesdlmfmri}{BayesDLMfMRI} for detailed examples of the use of this package.
 #' @export
 ffdGroupEvidenceFSTS <- function(ffdGroup, covariates, m0=0, Cova=100,
-                                 delta = 0.95, S0 = 1, n0 = 1, N1 = FALSE, Nsimu1=100, Cutpos=30, r1, Test, mask, Ncores = NULL){
+                                 delta = 0.95, S0 = 1, n0 = 1, N1 = FALSE, Nsimu1=100, Cutpos=30, r1, mask, Ncores = NULL){
   
   if(N1==FALSE){N1 = dim(covariates)[1]}
   
@@ -39,7 +39,7 @@ ffdGroupEvidenceFSTS <- function(ffdGroup, covariates, m0=0, Cova=100,
   
 
     ffd.out <- pbapply::pbapply(posiffd, 1, ffdGroupVoxelFSTS, ffdGroup, covariates, m0, Cova,
-                                delta, S0, n0, N1, Nsimu1, r1, Test, Cutpos, cl = Ncores)
+                                delta, S0, n0, N1, Nsimu1, r1, Cutpos, cl = Ncores)
     
     #number of tests from the output of ffdsingleVoxelFFBS  (Joint, marginal and LTT)
     Ntest <- 3
