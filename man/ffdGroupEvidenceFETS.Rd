@@ -57,7 +57,7 @@ the activation maps related to each column of the covariates matrix respectively
 Test=="LTT" or Test=="JointTest". The remaining activation maps are those associated with the marginal distribution.
 }
 \description{
-This function can be used to build activation maps for task-based fMRI group data
+This function can be used to build activation maps for group task-based fMRI data.
 }
 \details{
 A multivariate dynamic linear model is fitted in the same fashion as at the individual level for every subject in the sample. 

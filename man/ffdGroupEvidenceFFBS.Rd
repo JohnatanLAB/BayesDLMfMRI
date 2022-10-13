@@ -53,7 +53,7 @@ It returns a list of the form [[k]][p,x,y,z], where k defines the type of test
  position in the covariates matrix and x,y,z represent the voxel position in the brain image.
 }
 \description{
-This function can be used to build activation maps for task-based fMRI group data
+This function can be used to build activation maps for group task-based fMRI data.
 }
 \details{
 A multivariate dynamic linear model is fitted in the same fashion as at the individual level for every subject in the sample. 

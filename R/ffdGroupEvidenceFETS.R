@@ -3,7 +3,7 @@
 #' @name ffdGroupEvidenceFETS
 #' @title ffdGroupEvidenceFETS
 #' @description
-#' This function can be used to build activation maps for task-based fMRI group data
+#' This function can be used to build activation maps for group task-based fMRI data.
 #' @references
 #' \insertRef{CARDONAJIMENEZ2021107297}{BayesDLMfMRI}
 #' 
