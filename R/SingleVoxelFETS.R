@@ -32,7 +32,22 @@
 #' @examples 
 #' See \insertCite{cardona2021bayesdlmfmri}{BayesDLMfMRI} for detailed examples of the use of this package.
 #' @export
-SingleVoxelFETS <- function(posi.ffd, covariates, ffdc, m0, Cova, delta, S0, n0, N1, Nsimu1, Cutpos1, Min.vol, r1, Test){
+SingleVoxelFETS <- function(posi.ffd, covariates, ffdc, m0, Cova, delta, 
+                            S0, n0, N1, Nsimu1, Cutpos1, 
+                            Min.vol, r1, Test){
+
+  validate_input(
+    covariates=covariates,
+    ffdc = ffdc,
+    delta=delta,
+    n0=n0,
+    N1=N1,
+    Nsimu1=Nsimu1,
+    Cutpos1=Cutpos1,
+    Min.vol=Min.vol,
+    r1=r1,
+    Test=Test
+  )
   
   
   if(r1 == 0){

@@ -22,9 +22,27 @@
 #' @return Produces some usefull outputs from a single voxel analysis related to the FFBS algorithm
 #' @examples TODO
 #' @export
-GroupSingleVoxelFFBS <- function(posi.ffd, DatabaseGroup, covariates, m0, Cova, delta, S0, n0, N1, Nsimu1, r1, Test, Cutpos){
+GroupSingleVoxelFFBS <- function(posi.ffd, DatabaseGroup, 
+                                 covariates, m0, Cova, 
+                                 delta, S0, n0, N1, Nsimu1, 
+                                 r1, Test, Cutpos){
+
   
-  if(N1==FALSE){N1 = dim(covariates)[1]}
+  if(is.logical(N1)) {
+    if(N1==FALSE){N1 = dim(covariates)[1]}
+  }
+
+  validate_input(
+    covariates=covariates,
+    delta=delta,
+    n0=n0,
+    N1=N1,
+    Nsimu1=Nsimu1,
+    r1=r1,
+    Test=Test,
+    Cutpos1=Cutpos
+  )
+  
   
   if(r1 == 0){
     
