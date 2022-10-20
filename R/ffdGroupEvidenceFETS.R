@@ -15,7 +15,7 @@
 #' @param ffdGroup list of N elements, each being a 4D array (ffdc[i,j,k,t]) that contains the sequence of MRI images related to each of the N subjects in the sample.
 #' @param covariates a data frame or matrix whose columns contain the covariates related to the expected BOLD response obtained from the experimental setup.
 #' @param m0 the constant prior mean value for the covariates parameters and common to all voxels within every neighborhood at t=0 (m=0 is the default value when no prior information is available). For the case of available prior information, m0 can be defined as a pXr matrix, where p is the number of columns in the covariates object and r is the cluster size.
-#' @param Cova a positive constant that defines the prior variances for the covariates parameters at t=0 (Cova=100 is the default value when no prior information is available). For the case of available prior information, Cova0 can be defined as a pXp matrix, where p is the number of columns in the covariates object
+#' @param Cova a positive constant that defines the prior variances for the covariates parameters at t=0 (Cova=100 is the default value when no prior information is available). For the case of available prior information, Cova0 can be defined as a pXp matrix, where p is the number of columns in the covariates object.
 #' @param delta a discount factor related to the evolution variances. Recommended values between 0.85<delta<1. delta=1 will yield results similar to the classical general linear model.
 #' @param S0 prior covariance structure between pair of voxels within every cluster at t=0. S0=1 is the default value when no prior information is available and defines an rXr identity matrix. For the case of available prior information, S0 can be defined as an rXr matrix, where r is the common number of voxels in every cluster.
 #' @param n0 a positive hyperparameter of the prior distribution for the covariance matrix S0 at t=0 (n=1 is the default value when no prior information is available). For the case of available prior information, n0 can be set as n0=np, where np is the number of MRI images in the pilot sample.
@@ -25,7 +25,7 @@
 #' @param r1 positive integer number that defines the distance from every voxel with its most distant neighbor. This value determines the size of the cluster. The users can set a range of different r values: r = 0, 1, 2, 3, 4, which leads to q = 1, 7, 19, 27, 33, where q is the size of the cluster.
 #' @param Test test type either "LTT" (Average cluster effect) or "JointTest" (Joint effect).
 #' @param mask a 3D array that works as a brain of reference (MNI atlas) for the group analysis.
-#' @param Ncores a postive integer indicating the number of threads or cores to be used in the computation of the activation maps.
+#' @param Ncores a positive integer indicating the number of threads or cores to be used in the computation of the activation maps.
 #' @return It returns a list of 2 × p elements, where p is the number of covariates, and 2 is the number 
 #' of options evaluated as sampler distributions: Average cluster effect and Marginal effect (when Test=="LTT") or Joint effect and Marginal effect (when Test=="JointTest"). The first p elements from the list are 
 #' the activation maps related to each column of the covariates matrix respectively when computing the activation evidence using either
