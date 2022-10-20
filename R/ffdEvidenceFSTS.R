@@ -24,7 +24,7 @@
 #' @param r1 a positive integer number that defines the distance from every voxel with its most distant neighbor. This value determines the size of the cluster. The users can set a range of different r values: r = 0, 1, 2, 3, 4, which leads to q = 1, 7, 19, 27, 33, where q is the size of the cluster.
 #' @param perVol helps to define a threshold for the voxels considered in the analysis. For example, Min.vol = 0.10 means that all the voxels with values
 #' below to max(ffdc)*perVol can be considered irrelevant and discarded from the analysis.
-#' @param Ncores a postive integer indicating the number of threads or cores to be used in the computation of the activation maps.
+#' @param Ncores a positive integer indicating the number of threads or cores to be used in the computation of the activation maps.
 #' @return  It returns a list of the form [[k]][p,x,y,z], where k defines the type of test (k = 1 for "Marginal", k = 2 for "JointTest", and k = 3 for "LTT"), p represents the column position in the covariates matrix and x,y,z represent the voxel position in the brain image.
 #' @examples
 #' See \insertCite{cardona2021bayesdlmfmri}{BayesDLMfMRI} for detailed examples of the use of this package.
