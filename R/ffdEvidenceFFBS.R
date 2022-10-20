@@ -33,70 +33,26 @@ ffdEvidenceFFBS = function(ffdc, covariates, m0=0, Cova=100,
                            Nsimu1 = 100, Cutpos1=30, r1 = 1, 
                            perVol = 0.10, Ncores = NULL, seed=NULL){
 
-  # check ncores
-  if(!is.null(Ncores)) {
-    
-    if(is.na(Ncores)) {
-      Ncores  <-  1
-    }
-    
-    if(Ncores < 1) {
-      stop("The number of cores must be greater than zero")
-    }
-  }
   
-  # check n_simulation
-  if(N1 > 2) {
-    stop("Test must be LTT or JointTest")
-  }
-  
-  # Check ffdc
-  if(!is.array(ffdc)) {
-    stop("ffde must be an array.")
-  }
-  
-  # check ncores
-  if(!is.null(Ncores)) {
-    
-    if(is.na(Ncores)) {
-      Ncores  <-  1
-    }
-    
-    if(Ncores < 1) {
-      stop("The number of cores must be greater than zero")
-    }
-  }
-  
-  # check n_simulation
-  if(N1 > 2) {
-    stop("Test must be LTT or JointTest")
-  }
-  
-  # Check ffdc
-  if(!is.array(ffdc)) {
-    stop("ffde must be an array.")
-  }
-  
-  
-  if(length(dim(ffdc)) != 4 ) {
-    
-    stop("ffdc must be a 4D array.")
-    
-  }
-  
-  # check covariates
-  if(!is.data.frame(covariates)) {
-    stop("covariates must be a dataframe.")
-  }
-  
-  # check
-  if(length(dim(covariates)) != 2) {
-    
-    stop("covariates must be a 2D array.")
-  }
 
+  if(is.logical(N1)) {
+    if(N1==FALSE){N1=dim(ffdc)[4]}
+  }
+  
+  # validation
+  Ncores  <- get_n_cores(Ncores)
 
-  if(N1==FALSE){N1=dim(ffdc)[4]}
+  validate_input(
+    ffdc=ffdc,
+    covariates=covariates,
+    delta=delta,
+    n0 =n0,
+    N1 = N1,
+    Nsimu1 = Nsimu1,
+    Cutpos1=Cutpos1,
+    r1=r1,
+    perVol=perVol
+  )
   
   #TAKING THE POSITIONS FROM THE 4D IMAGE WITH NON-NULL VALUES 
   posiffd1 <- which(ffdc[,,,1] != 0, arr.ind = TRUE)

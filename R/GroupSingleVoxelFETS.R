@@ -28,9 +28,25 @@
 #' @examples
 #' See \insertCite{cardona2021bayesdlmfmri}{BayesDLMfMRI} for detailed examples of the use of this package.
 #' @export
-GroupSingleVoxelFETS <- function(posi.ffd, DatabaseGroup, covariates, m0, Cova, delta, S0, n0, N1, Nsimu1, r1, Test, Cutpos){
+GroupSingleVoxelFETS <- function(posi.ffd, DatabaseGroup, 
+                                 covariates, m0, Cova, delta, S0, n0, N1, Nsimu1, 
+                                 r1, Test, Cutpos){
   
-  if(N1==FALSE){N1 = dim(covariates)[1]}
+  if(is.logical(N1)) {
+    if(N1==FALSE){N1 = dim(covariates)[1]}
+  }
+
+  validate_input(
+    covariates=covariates,
+    delta=delta,
+    n0=n0,
+    N1=N1,
+    Nsimu1=Nsimu1,
+    r1=r1,
+    Cutpos1=Cutpos,
+    Test=Test
+  )
+  
   
   if(r1 == 0){
     
