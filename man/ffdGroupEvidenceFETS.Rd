@@ -28,7 +28,7 @@ ffdGroupEvidenceFETS(
 
 \item{m0}{the constant prior mean value for the covariates parameters and common to all voxels within every neighborhood at t=0 (m=0 is the default value when no prior information is available). For the case of available prior information, m0 can be defined as a pXr matrix, where p is the number of columns in the covariates object and r is the cluster size.}
 
-\item{Cova}{a positive constant that defines the prior variances for the covariates parameters at t=0 (Cova=100 is the default value when no prior information is available). For the case of available prior information, Cova0 can be defined as a pXp matrix, where p is the number of columns in the covariates object}
+\item{Cova}{a positive constant that defines the prior variances for the covariates parameters at t=0 (Cova=100 is the default value when no prior information is available). For the case of available prior information, Cova0 can be defined as a pXp matrix, where p is the number of columns in the covariates object.}
 
 \item{delta}{a discount factor related to the evolution variances. Recommended values between 0.85<delta<1. delta=1 will yield results similar to the classical general linear model.}
 
@@ -48,7 +48,7 @@ ffdGroupEvidenceFETS(
 
 \item{mask}{a 3D array that works as a brain of reference (MNI atlas) for the group analysis.}
 
-\item{Ncores}{a postive integer indicating the number of threads or cores to be used in the computation of the activation maps.}
+\item{Ncores}{a positive integer indicating the number of threads or cores to be used in the computation of the activation maps.}
 }
 \value{
 It returns a list of 2 × p elements, where p is the number of covariates, and 2 is the number 

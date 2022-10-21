@@ -16,24 +16,23 @@ GroupSingleVoxelFFBS(
   N1,
   Nsimu1,
   r1,
-  Test,
   Cutpos
 )
 }
 \arguments{
-\item{posi.ffd}{por definir TODO}
+\item{posi.ffd}{the position of the voxel in the brain image.}
 
-\item{DatabaseGroup}{por definir TODO}
+\item{DatabaseGroup}{list of N elements, each being a 4D array (ffdc[i,j,k,t]) that contains the sequence of MRI images related to each of the N subjects in the sample.}
 
-\item{covariates}{a data frame or matrix whose columns contain the covariates related to the expected BOLD response obtained from the experimental setup}
+\item{covariates}{a data frame or matrix whose columns contain the covariates related to the expected BOLD response obtained from the experimental setup.}
 
-\item{m0}{the constant prior mean value for the covariates parameters and common to all voxels within every neighborhood at t=0 (m=0 is the default value when no prior information is available). For the case of available prior information, m0 can be defined as a pXr matrix, where p is the number of columns in the covariates object and r is the cluster size}
+\item{m0}{the constant prior mean value for the covariates parameters and common to all voxels within every neighborhood at t=0 (m=0 is the default value when no prior information is available). For the case of available prior information, m0 can be defined as a pXr matrix, where p is the number of columns in the covariates object and r is the cluster size.}
 
-\item{Cova}{a positive constant that defines the prior variances for the covariates parameters at t=0 (Cova=100 is the default value when no prior information is available). For the case of available prior information, Cova0 can be defined as a pXp matrix, where p is the number of columns in the covariates object}
+\item{Cova}{a positive constant that defines the prior variances for the covariates parameters at t=0 (Cova=100 is the default value when no prior information is available). For the case of available prior information, Cova0 can be defined as a pXp matrix, where p is the number of columns in the covariates object.}
 
-\item{delta}{a discount factor related to the evolution variances. Recommended values between 0.85<delta<1. delta=1 will yield results similar to the classical general linear model}
+\item{delta}{a discount factor related to the evolution variances. Recommended values between 0.85<delta<1. delta=1 will yield results similar to the classical general linear model.}
 
-\item{S0}{prior covariance structure between pair of voxels within every cluster at t=0, S0=1 is the default value when no prior information is available and defines an rXr identity matrix. For the case of available prior information, S0 can be defined as an rXr matrix, where r is the common number of voxels in every cluster}
+\item{S0}{prior covariance structure between pair of voxels within every cluster at t=0, S0=1 is the default value when no prior information is available and defines an rXr identity matrix. For the case of available prior information, S0 can be defined as an rXr matrix, where r is the common number of voxels in every cluster.}
 
 \item{n0}{a positive hyperparameter of the prior distribution for the covariance matrix S0 at t=0 (n=1 is the default value when no prior information is available). For the case of available prior information, n0 can be set as n0=np, where np is the number of MRI images in the pilot sample.}
 
@@ -43,23 +42,25 @@ GroupSingleVoxelFFBS(
 
 \item{r1}{a positive integer number that defines the distance from every voxel with its most distant neighbor. This value determines the size of the cluster. The users can set a range of different r values: r = 0, 1, 2, 3, 4, which leads to q = 1, 7, 19, 27, 33, where q is the size of the cluster.}
 
-\item{Test}{test type either "LTT"or "JointTest"}
-
 \item{Cutpos}{a cutpoint time from where the on-line trajectories begin. This parameter value is related to an approximation from a t-student distribution to a normal distribution. Values equal to or greater than 30 are recommended (30<Cutpos1<T).}
-
-\item{perVol}{a positive numeric variable}
-
-\item{Ncores}{a postive integer indicating the number of threads to be used}
 }
 \value{
-Produces some usefull outputs from a single voxel analysis related to the FFBS algorithm
+a list containing a vector (Evidence) with the evidence measure of 
+activation for each of the p covariates considered in the model, the simulated 
+online trajectories related to the state parameter, the simulated BOLD responses,
+ and a measure to examine the goodness of fit of the model (100 ∗ |Y[i,j,k]_t − \hat{Y}[i,j,k]_t |/ \hat{Y}[i,j,k]_t ) for that particular voxel (FitnessV).
 }
 \description{
-descripcion de la funcion GroupSingleVoxelFFBS TODO
+This function is used to perform a group activation analysis for single voxels based on the FFBS algorithm.
 }
 \details{
-detalles de uso de la funcion
+This function allows the performance of a group activation analysis for single voxels. A multivariate dynamic linear model is fitted to a cluster of voxels, with its center at location (i,j,k), in the way it is presented in \insertCite{CARDONAJIMENEZ2021107297}{BayesDLMfMRI}.
 }
 \examples{
-TODO
+See \insertCite{cardona2021bayesdlmfmri}{BayesDLMfMRI} for detailed examples of the use of this package.
+}
+\references{
+\insertRef{CARDONAJIMENEZ2021107297}{BayesDLMfMRI}
+
+\insertRef{cardona2021bayesdlmfmri}{BayesDLMfMRI}
 }

@@ -47,7 +47,7 @@ ffdEvidenceFSTS(
 \item{perVol}{helps to define a threshold for the voxels considered in the analysis. For example, Min.vol = 0.10 means that all the voxels with values
 below to max(ffdc)*perVol can be considered irrelevant and discarded from the analysis.}
 
-\item{Ncores}{a postive integer indicating the number of threads or cores to be used in the computation of the activation maps.}
+\item{Ncores}{a positive integer indicating the number of threads or cores to be used in the computation of the activation maps.}
 }
 \value{
 It returns a list of the form [[k]][p,x,y,z], where k defines the type of test (k = 1 for "Marginal", k = 2 for "JointTest", and k = 3 for "LTT"), p represents the column position in the covariates matrix and x,y,z represent the voxel position in the brain image.
