@@ -125,7 +125,7 @@ validate_input  <- function(N1=NULL, Test=NULL, Nsimu1=NULL,
   if(!is.null(N1)) {
 
     
-    if(N1 > 2) {
+    if( !(N1 > 2) ) {
         stop("The number of images must be grater than 2")
     }
 
@@ -135,7 +135,7 @@ validate_input  <- function(N1=NULL, Test=NULL, Nsimu1=NULL,
   if(!is.null(Nsimu1)) {
 
     
-    if(Nsimu1 > 2) {
+    if( !(Nsimu1 > 2) ) {
         stop("The  numbersimulations must be grater than 2")
     }
 

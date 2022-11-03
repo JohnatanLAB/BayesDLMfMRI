@@ -54,6 +54,7 @@ online trajectories related to the state parameter, the simulated BOLD responses
  and a measure to examine the goodness of fit of the model (100 ∗ |Y[i,j,k]_t − \hat{Y}[i,j,k]_t |/ \hat{Y}[i,j,k]_t ) for that particular voxel (FitnessV).
 }
 \description{
+\loadmathjax
 This function is used to perform a group activation analysis for single voxels based on the FETS algorithm.
 }
 \details{

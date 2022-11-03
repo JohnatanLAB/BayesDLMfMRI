@@ -1,6 +1,7 @@
 #' @name GroupSingleVoxelFETS
 #' @title GroupSingleVoxelFETS
 #' @description
+#' \loadmathjax
 #' This function is used to perform a group activation analysis for single voxels based on the FETS algorithm.
 #' @references
 #' \insertRef{CARDONAJIMENEZ2021107297}{BayesDLMfMRI}
