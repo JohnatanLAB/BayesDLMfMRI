@@ -1,6 +1,6 @@
 
-#' @name IndividualVoxelFETS
-#' @title IndividualVoxelFETS
+#' @name SingleVoxelFETS
+#' @title SingleVoxelFETS
 #' @description
 #' This function is used to perform an activation analysis for single voxels based on the FETS algorithm.
 #' @references
@@ -28,7 +28,7 @@
 #' @return a list containing a vector (Evidence) with the evidence measure of 
 #' activation for each of the p covariates considered in the model, the simulated 
 #' online trajectories related to the state parameter, the simulated BOLD responses,
-#'  and a measure to examine the goodness of fit of the model (100 ∗ |Y[i,j,k]_t − \hat{Y}[i,j,k]_t |/ \hat{Y}[i,j,k]_t ) for that particular voxel (FitnessV).
+#'  and a measure to examine the goodness of fit of the model \mjseqn{(100 ∗ |Y[i,j,k]_t − \hat{Y}[i,j,k]_t |/ \hat{Y}[i,j,k]_t )} for that particular voxel (FitnessV).
 #' @examples 
 #' See \insertCite{cardona2021bayesdlmfmri}{BayesDLMfMRI} for detailed examples of the use of this package.
 #' @export

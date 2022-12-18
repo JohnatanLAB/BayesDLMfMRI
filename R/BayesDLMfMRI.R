@@ -10,5 +10,6 @@
 #' @name BayesDLMfMRI
 #' @useDynLib BayesDLMfMRI , .registration=TRUE
 #' @exportPattern "^[[:alpha:]]+"
+#' @import mathjaxr
 NULL
 #> NULL

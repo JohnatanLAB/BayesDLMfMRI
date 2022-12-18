@@ -7,10 +7,10 @@ Author: Johnatan Cardona J
 Maintainer: Johnatan Cardona J <jcardonj@unal.edu.co>
 Description: R package for task-based fMRI statistical analysis
 License: GPL-2
-Imports: Rcpp (>= 1.0.4), Rdpack
-RdMacros: Rdpack
+Imports: Rcpp (>= 1.0.4), Rdpack, mathjaxr
+RdMacros: Rdpack, mathjaxr
 LinkingTo: pbapply, Rcpp, RcppArmadillo, RcppDist
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3
 Encoding: UTF-8
 Suggests: 
     rmarkdown,
