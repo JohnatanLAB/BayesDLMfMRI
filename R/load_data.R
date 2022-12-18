@@ -1,14 +1,36 @@
 #' @export
-get_example_fMRI_data <- function() {
+get_example_fMRI_data <- function(save_path="./example_data", force=FALSE) {
   
-  # m_data <- system.file( file.path("test_data",  "data_test.Rds"),  
-  #                        package="BayesDLMfMRI") |> 
-  #           readRDS()
+  URL_1 <- "https://johnatanlab.github.io/files/test_1.rds"
+  URL_2 <- "https://johnatanlab.github.io/files/test_2.rds"
+  URL_3 <- "https://johnatanlab.github.io/files/test_3.rds"
   
-  # m_data <- data("data_test.Rds", package="BayesDLMfMRI")
-  # m_data <- data("data_test", package="BayesDLMfMRI")
-  data("data_test", package="BayesDLMfMRI")
+  dir.create(save_path, showWarnings = FALSE)
   
+  path_1 <- file.path(save_path,"test_1.rds")
+  path_2 <- file.path(save_path,"test_2.rds")
+  path_3 <- file.path(save_path,"test_3.rds")
+  
+  if( (!file.exists(path_1)) & (!force)) {
+    download.file(URL_1, destfile=path_1, quiet=FALSE)
+  }
+  
+  if( (!file.exists(path_2)) & (!force)) {
+    download.file(URL_2, destfile=path_2, quiet=FALSE)
+  }
+  
+  if( (!file.exists(path_3)) & (!force)) {
+    download.file(URL_3, destfile=path_3, quiet=FALSE)
+  }
+  
+  d1 <- readRDS(path_1)
+  d2 <- readRDS(path_2)
+  d3 <- readRDS(path_3)
+  
+  fMRI.data <- abind::abind(d1, d2, d3, along = 1)
+  
+  # tehe file is too big, to be upload to CRAN
+  # data("data_test", package="BayesDLMfMRI")
   
   return(fMRI.data)
   # return(m_data)
