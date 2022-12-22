@@ -27,7 +27,7 @@
 #' online trajectories related to the state parameter, the simulated BOLD responses, \mjseqn{\hat{Y}}{ascii}.
 #'  and a measure to examine the goodness of fit of the model \mjseqn{(100 ∗ |Y[i,j,k]_t − \hat{Y}[i,j,k]_t | \hat{Y}[i,j,k]_t )} for that particular voxel (FitnessV).
 #' @examples
-#' See \insertCite{cardona2021bayesdlmfmri}{BayesDLMfMRI} for detailed examples of the use of this package.
+#' "See the Vignettes for examples."
 #' @export
 GroupSingleVoxelFETS <- function(posi.ffd, DatabaseGroup, 
                                  covariates, m0, Cova, delta, S0, n0, N1, Nsimu1, 

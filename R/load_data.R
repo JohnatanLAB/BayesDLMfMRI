@@ -1,3 +1,11 @@
+#' @name get_example_fMRI_data
+#' @title get_example_fMRI_data
+#' @description
+#' This function is used to download the example data used in the Vignettes. 
+#' @details
+#' By default this function 
+#' @param save_path location where the data the example data is stored.
+#' @param force force the download, even if the data already exists.
 #' @export
 get_example_fMRI_data <- function(save_path="./example_data", force=FALSE) {
   
@@ -36,6 +44,10 @@ get_example_fMRI_data <- function(save_path="./example_data", force=FALSE) {
   # return(m_data)
 }
 
+#' @name get_example_covariates
+#' @title get_example_covariates
+#' @description
+#' This function is used to load the example covariates used in the Vignettes. 
 #' @export
 get_example_covariates <- function() {
   

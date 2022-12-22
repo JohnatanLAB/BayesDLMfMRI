@@ -57,7 +57,7 @@ This function is used to perform a group activation analysis for single voxels b
 This function allows the performance of a group activation analysis for single voxels. A multivariate dynamic linear model is fitted to a cluster of voxels, with its center at location (i,j,k), in the way it is presented in \insertCite{CARDONAJIMENEZ2021107297}{BayesDLMfMRI}.
 }
 \examples{
-See \insertCite{cardona2021bayesdlmfmri}{BayesDLMfMRI} for detailed examples of the use of this package.
+"See the Vignettes for examples."
 }
 \references{
 \insertRef{CARDONAJIMENEZ2021107297}{BayesDLMfMRI}

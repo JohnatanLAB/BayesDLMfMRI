@@ -64,7 +64,7 @@ Every voxel from the 4D array image is clustered with its nearest neighbors. The
 The resulting activation evidence measure for every voxel is obtained using the Forward Estimated Trajectories Sampler (FETS) algorithm. To deeply understand the method implemented in this package, a reading of \insertCite{CARDONAJIMENEZ2021107297}{BayesDLMfMRI} and \insertCite{cardona2021bayesdlmfmri}{BayesDLMfMRI} is mandatory.
 }
 \examples{
-"See \insertCite{cardona2021bayesdlmfmri}{BayesDLMfMRI} for detailed examples of the use of this package."
+"See the Vignettes for examples."
 }
 \references{
 \insertRef{CARDONAJIMENEZ2021107297}{BayesDLMfMRI}

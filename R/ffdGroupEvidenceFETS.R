@@ -31,7 +31,7 @@
 #' the activation maps related to each column of the covariates matrix respectively when computing the activation evidence using either
 #' Test=="LTT" or Test=="JointTest". The remaining activation maps are those associated with the marginal distribution.
 #' @examples
-#' See \insertCite{cardona2021bayesdlmfmri}{BayesDLMfMRI} for detailed examples of the use of this package.
+#' "See the Vignettes for examples."
 #' @export
 ffdGroupEvidenceFETS <- function(ffdGroup, covariates, m0=0, Cova=100,
                                 delta = 0.95, S0 = 1, n0 = 1, 
