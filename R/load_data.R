@@ -37,8 +37,7 @@ get_example_fMRI_data <- function(save_path="./example_data", force=FALSE) {
   
   fMRI.data <- abind::abind(d1, d2, d3, along = 1)
   
-  # tehe file is too big, to be upload to CRAN
-  # data("data_test", package="BayesDLMfMRI")
+
   
   return(fMRI.data)
   # return(m_data)
@@ -51,12 +50,7 @@ get_example_fMRI_data <- function(save_path="./example_data", force=FALSE) {
 #' @export
 get_example_covariates <- function() {
   
-  # m_data <- system.file( file.path("test_data",  "covariates.Rds"),  
-  #                        package="BayesDLMfMRI") |> 
-  #           readRDS()
   
-  # m_data <- data("covariates.Rds", package="BayesDLMfMRI")
-  # m_data <- data("covariates", package="BayesDLMfMRI")
   data("covariates", package="BayesDLMfMRI")
   
   return(Covariates)

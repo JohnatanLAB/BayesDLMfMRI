@@ -27,6 +27,7 @@
 #' below to max(ffdc)*perVol can be considered irrelevant and discarded from the analysis.
 #' @param Test test type either "LTT" (Average cluster effect) or "JointTest" (Joint effect).
 #' @param Ncores a positive integer indicating the number of threads or cores to be used in the computation of the activation maps.
+#' @param seed random seed.
 #' @return It returns a list of the type res[[p]][x,y,z], where p represents the column position in
 #' the covariates matrix and [x,y,z] represent the voxel position in the brain image.
 #' @examples

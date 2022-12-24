@@ -51,7 +51,7 @@ GroupSingleVoxelFETS(
 a list containing a vector (Evidence) with the evidence measure of 
 activation for each of the p covariates considered in the model, the simulated 
 online trajectories related to the state parameter, the simulated BOLD responses, \mjseqn{\hat{Y}}{ascii}.
- and a measure to examine the goodness of fit of the model \mjseqn{(100 ∗ |Y[i,j,k]_t − \hat{Y}[i,j,k]_t | \hat{Y}[i,j,k]_t )} for that particular voxel (FitnessV).
+ and a measure to examine the goodness of fit of the model \mjseqn{(100 \ast |Y[i,j,k]_t - \hat{Y}[i,j,k]_t | \hat{Y}[i,j,k]_t )} for that particular voxel (FitnessV).
 }
 \description{
 \loadmathjax

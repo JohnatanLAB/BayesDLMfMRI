@@ -11,5 +11,14 @@
 #' @useDynLib BayesDLMfMRI , .registration=TRUE
 #' @exportPattern "^[[:alpha:]]+"
 #' @import mathjaxr
+#' @import stats
+#' @import utils
 NULL
 #> NULL
+
+
+#' Covariates
+#' example covariates used in the vignettes.
+#' @examples
+#' Covariates
+"Covariates"

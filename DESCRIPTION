@@ -1,14 +1,14 @@
 Package: BayesDLMfMRI
 Type: Package
 Title: Statistical analysis for task-based fMRI data
-Version: 1.00
+Version: 1.0.0
 Date: 2022-12-22
 URL: https://github.com/JohnatanLAB/BayesDLMfMRI/
 Authors@R: c(
-    person("Johnatan", "Cardona", email = "jcardonj@unal.edu.co", role = "cre"),
-    person("Carlos", "Pérez", email = "caaperezag@unal.edu.co", role = "aut"),
+    person("Johnatan", "Cardona", email = "caaperezag@unal.edu.co", role = "cre"),
+    person("Carlos", "Pérez", email = "jcardonj@unal.edu.co", role = "aut"),
     person("Isabel", "Ramírez", email = "iscramirezgu@unal.edu.co", role = "aut"))
-Maintainer: Johnatan Cardona J <jcardonj@unal.edu.co>
+Maintainer: Johnatan Cardona <caaperezag@unal.edu.co>
 Description: R package for task-based fMRI statistical analysis
 License: GPL-2
 Imports:
@@ -18,13 +18,14 @@ Imports:
     Rdpack,
     mathjaxr
 RdMacros: Rdpack, mathjaxr
-LinkingTo: pbapply, Rcpp, RcppArmadillo, RcppDist
+LinkingTo: Rcpp, RcppArmadillo, RcppDist
 RoxygenNote: 7.2.3
 Encoding: UTF-8
 Suggests: 
     rmarkdown,
     knitr,
     oro.nifti,
+    neurobase,
     testthat (>= 3.0.0),
     R (>= 4.1.0)
 Config/testthat/edition: 3

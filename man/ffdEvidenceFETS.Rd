@@ -51,6 +51,8 @@ below to max(ffdc)*perVol can be considered irrelevant and discarded from the an
 \item{Test}{test type either "LTT" (Average cluster effect) or "JointTest" (Joint effect).}
 
 \item{Ncores}{a positive integer indicating the number of threads or cores to be used in the computation of the activation maps.}
+
+\item{seed}{random seed.}
 }
 \value{
 It returns a list of the type res[[p]][x,y,z], where p represents the column position in
