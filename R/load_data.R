@@ -43,19 +43,4 @@ get_example_fMRI_data <- function(save_path="./example_data", force=FALSE) {
   # return(m_data)
 }
 
-#' @name get_example_covariates
-#' @title get_example_covariates
-#' @description
-#' This function is used to load the example covariates used in the Vignettes. 
-#' @export
-get_example_covariates <- function() {
-  
-  
-  data("covariates", package="BayesDLMfMRI")
-  
-  return(Covariates)
-  
-  # return(m_data)
-  
-}
 
