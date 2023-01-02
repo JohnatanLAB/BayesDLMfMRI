@@ -1,5 +1,5 @@
 ---
-title: "Individual analysis"
+title: "Individual_analysis"
 output: 
     rmarkdown::html_vignette
 vignette: >

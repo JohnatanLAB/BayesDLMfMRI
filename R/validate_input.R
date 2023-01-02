@@ -4,7 +4,7 @@
 #' return the number of cores.
 #' @param Ncores numer of cores
 #' @keywords internal
-#' @export
+#' @noRd
 get_n_cores  <- function(Ncores) {
 
     # check ncores
@@ -35,7 +35,7 @@ get_n_cores  <- function(Ncores) {
 #' validate ffdGroup
 #' @param ffdGroup group
 #' @keywords internal
-#' @export
+#' @noRd
 check_ffdgroup  <- function(ffdGroup) {
 
     if(!is.list(ffdGroup)) {
@@ -86,7 +86,7 @@ check_ffdgroup  <- function(ffdGroup) {
 #' @param Cutpos1 a cutpoint time from where the on-line trajectories begin. This parameter value is related to an approximation from a t-student distribution to a normal distribution. Values equal to or greater than 30 are recommended (30<Cutpos1<T).  
 #' @param ffdGroup group
 #' @keywords internal
-#' @export
+#' @noRd
 validate_input  <- function(N1=NULL, Test=NULL, Nsimu1=NULL,
                             ffdc=NULL, covariates=NULL,
                             r1 = NULL, delta=NULL, perVol=NULL,Min.vol=NULL,

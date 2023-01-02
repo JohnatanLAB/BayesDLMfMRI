@@ -5,7 +5,7 @@
 
 
 #' @keywords internal
-#' @export
+#' @noRd
 distanceNeighbors <- function(posi.refer, r1){
   
   if(r1==0){return(rbind(posi.refer))}

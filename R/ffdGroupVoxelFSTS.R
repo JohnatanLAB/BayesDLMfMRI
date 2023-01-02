@@ -1,6 +1,6 @@
 
 #' @keywords internal
-#' @export
+#' @noRd
 ffdGroupVoxelFSTS <- function(posi.ffd, DatabaseGroup, covariates, m0, Cova, delta, S0, n0, N1, Nsimu1, r1, Test, Cutpos){
   
   
