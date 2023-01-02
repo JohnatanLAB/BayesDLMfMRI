@@ -1,6 +1,7 @@
 ---
 title: "Individual analysis"
-output: rmarkdown::html_vignette
+output: 
+    rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Individual_analysis}
   %\VignetteEngine{knitr::rmarkdown}

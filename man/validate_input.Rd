@@ -50,3 +50,4 @@ below to max(ffdc)*Min.vol can be considered irrelevant and discarded from the a
 \description{
 validate input
 }
+\keyword{internal}

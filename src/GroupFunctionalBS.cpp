@@ -16,7 +16,7 @@ using namespace Rcpp ;
 // via the exports attribute we tell Rcpp to make this function
 // available from R
 //
-// [[Rcpp::export]]
+// [[Rcpp::export(name=".Group_Functional_Backwards_Sampling")]]
 
 Rcpp::List Group_Functional_Backwards_Sampling(const arma::mat & ffd1, const arma::mat & Cova, const double m0In,
                                      const arma::mat & c0In, const double S0In, const arma::mat & beta0In,

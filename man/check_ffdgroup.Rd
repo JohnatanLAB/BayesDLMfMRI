@@ -12,3 +12,4 @@ check_ffdgroup(ffdGroup)
 \description{
 validate ffdGroup
 }
+\keyword{internal}

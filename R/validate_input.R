@@ -3,6 +3,7 @@
 #' @description
 #' return the number of cores.
 #' @param Ncores numer of cores
+#' @keywords internal
 #' @export
 get_n_cores  <- function(Ncores) {
 
@@ -33,6 +34,7 @@ get_n_cores  <- function(Ncores) {
 #' @description
 #' validate ffdGroup
 #' @param ffdGroup group
+#' @keywords internal
 #' @export
 check_ffdgroup  <- function(ffdGroup) {
 
@@ -83,6 +85,7 @@ check_ffdgroup  <- function(ffdGroup) {
 #' @param n0 a positive hyperparameter of the prior distribution for the covariance matrix S0 at t=0 (n=1 is the default value when no prior information is available). For the case of available prior information, n0 can be set as n0=np, where np is the number of MRI images in the pilot sample.
 #' @param Cutpos1 a cutpoint time from where the on-line trajectories begin. This parameter value is related to an approximation from a t-student distribution to a normal distribution. Values equal to or greater than 30 are recommended (30<Cutpos1<T).  
 #' @param ffdGroup group
+#' @keywords internal
 #' @export
 validate_input  <- function(N1=NULL, Test=NULL, Nsimu1=NULL,
                             ffdc=NULL, covariates=NULL,

@@ -12,3 +12,4 @@ get_n_cores(Ncores)
 \description{
 return the number of cores.
 }
+\keyword{internal}

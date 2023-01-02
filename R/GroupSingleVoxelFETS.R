@@ -111,7 +111,7 @@ GroupSingleVoxelFETS <- function(posi.ffd, DatabaseGroup,
                                                                             
                                                                             if(Test=="LTT"){
                                                                               
-                                                                              res <- Gruop_FunctionalTestLT(series.group, covariates, m0, Cova1, S0, Beta1, n0, sum(flag), N1, Ngroup, Nsimu1, Cutpos)  
+                                                                              res <- .Gruop_FunctionalTestLT(series.group, covariates, m0, Cova1, S0, Beta1, n0, sum(flag), N1, Ngroup, Nsimu1, Cutpos)  
                                                                               return(res)
                                                                             }
                                                                             
