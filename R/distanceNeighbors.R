@@ -4,7 +4,8 @@
 #INSTITUTION: DEPARTMENT OF MATHEMATICS AND STATISTICS OF THE UNIVERSITY OF SAO PAULO
 
 
-
+#' @keywords internal
+#' @export
 distanceNeighbors <- function(posi.refer, r1){
   
   if(r1==0){return(rbind(posi.refer))}

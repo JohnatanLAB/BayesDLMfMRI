@@ -1,5 +1,6 @@
 
-
+#' @keywords internal
+#' @export
 ffdGroupVoxelFETS <- function(posi.ffd, DatabaseGroup, covariates, m0, Cova, delta, S0, n0, N1, Nsimu1, r1, Test, Cutpos){
   
   #browser()
@@ -26,7 +27,7 @@ ffdGroupVoxelFETS <- function(posi.ffd, DatabaseGroup, covariates, m0, Cova, del
        Cova1 <- diag(rep(Cova, dim(covariates)[2]))
        delta1<- sqrt(delta)
        Beta1 <-diag(1/c(delta1, delta1))
-       res   <- Group_FunctionalMultiTest(ffd1 = series.group, Cova = covariates, m0In = m0, c0In = Cova1, S0In = S0, 
+       res   <- .Group_FunctionalMultiTest(ffd1 = series.group, Cova = covariates, m0In = m0, c0In = Cova1, S0In = S0, 
                                            beta0In = Beta1, nt0In = n0, flag1 = 0, NIn = N1, NS = Ngroup, Nsimu = Nsimu1, CUTpos = Cutpos)
        
        return( list(EvidenceJoint = res$EvidenMultivariate, 
@@ -74,7 +75,7 @@ ffdGroupVoxelFETS <- function(posi.ffd, DatabaseGroup, covariates, m0, Cova, del
            
            if(Test=="Joint"){
              
-             res   <- Group_FunctionalMultiTest(ffd1 = series.group, Cova = covariates, m0In = m0, c0In = Cova1, S0In = S0, 
+             res   <- .Group_FunctionalMultiTest(ffd1 = series.group, Cova = covariates, m0In = m0, c0In = Cova1, S0In = S0, 
                                                  beta0In = Beta1, nt0In = n0, flag1 = sum(flag), NIn = N1, NS = Ngroup, Nsimu = Nsimu1, CUTpos = Cutpos)
              
              return( list(EvidenceJoint = res$EvidenMultivariate, 
