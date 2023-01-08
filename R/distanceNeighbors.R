@@ -1,9 +1,15 @@
-#DATA: FEBRUARY 20/2021
-#AUTHOR: JOHNATAN CARDONA JIMENEZ
-#TITLE: R CODE TO CREATE THE POSITIONS' NEIGHBORS WITH RESPECT A POSITION (X, Y, Z) GIVEN THE DISTANT AND USING THE EUCLIDEAN DISTANCE
-#INSTITUTION: DEPARTMENT OF MATHEMATICS AND STATISTICS OF THE UNIVERSITY OF SAO PAULO
-
-
+#' @name distanceNeighbors
+#' @title distanceNeighbors
+#' @description
+#' this is an internal function
+#' @references
+#' \insertRef{CARDONAJIMENEZ2021107297}{BayesDLMfMRI}
+#' 
+#' \insertRef{cardona2021bayesdlmfmri}{BayesDLMfMRI}
+#' @details
+#' this is an internal function
+#' @param posi.refer  the position of the voxel in the brain image.
+#' @param r1 a positive integer number that defines the distance from every voxel with its most distant neighbor. This value determines the size of the cluster. The users can set a range of different r values: r = 0, 1, 2, 3, 4, which leads to q = 1, 7, 19, 27, 33, where q is the size of the cluster.
 #' @keywords internal
 #' @noRd
 distanceNeighbors <- function(posi.refer, r1){
