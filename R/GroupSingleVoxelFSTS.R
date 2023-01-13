@@ -9,23 +9,23 @@
 #' @details
 #' This function allows the performance of a group activation analysis for single voxels. A multivariate dynamic linear model is fitted to a cluster of voxels, with its center at location (i,j,k), in the way it is presented in \insertCite{CARDONAJIMENEZ2021107297}{BayesDLMfMRI}.
 #' @param posi.ffd the position of the voxel in the brain image.
-#' @param DatabaseGroup  list of N elements, each being a 4D array (ffdc[i,j,k,t]) that contains the sequence of MRI images related to each of the N subjects in the sample.
+#' @param DatabaseGroup  list of N elements, each being a 4D array (\code{ffdc[i,j,k,t]}) that contains the sequence of MRI images related to each of the N subjects in the sample.
 #' @param covariates a data frame or matrix whose columns contain the covariates related to the expected BOLD response obtained from the experimental setup.
-#' @param m0 the constant prior mean value for the covariates parameters and common to all voxels within every neighborhood at t=0 (m=0 is the default value when no prior information is available). For the case of available prior information, m0 can be defined as a pXr matrix, where p is the number of columns in the covariates object and r is the cluster size.
-#' @param Cova a positive constant that defines the prior variances for the covariates parameters at t=0 (Cova=100 is the default value when no prior information is available). For the case of available prior information, Cova0 can be defined as a pXp matrix, where p is the number of columns in the covariates object.
-#' @param delta a discount factor related to the evolution variances. Recommended values between 0.85<delta<1. delta=1 will yield results similar to the classical general linear model.
-#' @param S0 prior covariance structure between pair of voxels within every cluster at t=0, S0=1 is the default value when no prior information is available and defines an rXr identity matrix. For the case of available prior information, S0 can be defined as an rXr matrix, where r is the common number of voxels in every cluster.
-#' @param n0 a positive hyperparameter of the prior distribution for the covariance matrix S0 at t=0 (n=1 is the default value when no prior information is available). For the case of available prior information, n0 can be set as n0=np, where np is the number of MRI images in the pilot sample.
-#' @param N1 is the number of images (2<N1<T) from the ffdc array employed in the model fitting.N1=NULL (or equivalently N1=T) is its default value, taking all the images in the ffdc array for the fitting process.
+#' @param m0 the constant prior mean value for the covariates parameters and common to all voxels within every neighborhood at \code{t=0} (\code{m0=0} is the default value when no prior information is available). For the case of available prior information, \code{m0} can be defined as a \eqn{p\times q} matrix, where \eqn{p} is the number of columns in the covariates object and \eqn{q} is the cluster size.
+#' @param Cova a positive constant that defines the prior variances for the covariates parameters at \code{t=0} (\code{Cova=100} is the default value when no prior information is available). For the case of available prior information, \code{Cova} can be defined as a \code{p\times p} matrix, where \code{p} is the number of columns in the covariates object.
+#' @param delta a discount factor related to the evolution variances. Recommended values between \code{0.85<delta<1}. \code{delta=1} will yield results similar to the classical general linear model.
+#' @param S0 prior covariance structure between pair of voxels within every cluster at \code{t=0}, \code{S0=1} is the default value when no prior information is available and defines an \eqn{q\times q} identity matrix. For the case of available prior information, \code{S0} can be defined as an \eqn{q \times q} matrix, where \eqn{q} is the common number of voxels in every cluster.
+#' @param n0 a positive hyperparameter of the prior distribution for the covariance matrix \code{S0} at \code{t=0} (\code{n1=1} is the default value when no prior information is available). For the case of available prior information, \code{n0} can be set as \code{n0=np}, where \code{np} is the number of MRI images in the pilot sample.
+#' @param N1 is the number of images (\code{2<N1<T}) from the ffdc array employed in the model fitting. \code{N1=NULL} (or equivalently \code{N1=T}) is its default value, taking all the images in the \code{ffdc} array for the fitting process.
 #' @param Nsimu1 is the number of simulated on-line trajectories related to the state parameters. These simulated curves are later employed to compute the posterior probability of voxel activation.
-#' @param Cutpos a cutpoint time from where the on-line trajectories begin. This parameter value is related to an approximation from a t-student distribution to a normal distribution. Values equal to or greater than 30 are recommended (30<Cutpos1<T).  
-#' @param r1 a positive integer number that defines the distance from every voxel with its most distant neighbor. This value determines the size of the cluster. The users can set a range of different r values: r = 0, 1, 2, 3, 4, which leads to q = 1, 7, 19, 27, 33, where q is the size of the cluster.
-#' @return a list containing a vector (Evidence) with the evidence measure of 
-#' activation for each of the p covariates considered in the model, the simulated 
+#' @param Cutpos a cutpoint time from where the on-line trajectories begin. This parameter value is related to an approximation from a t-student distribution to a normal distribution. Values equal to or greater than 30 are recommended (\code{30<Cutpos1<T}).  
+#' @param r1 a positive integer number that defines the distance from every voxel with its most distant neighbor. This value determines the size of the cluster. The users can set a range of different \code{r1} values: \eqn{r1 = 0, 1, 2, 3, 4}, which leads to \eqn{q = 1, 7, 19, 27, 33}, where \eqn{q} is the size of the cluster.
+#' @return a list containing a vector (\code{Evidence}) with the evidence measure of 
+#' activation for each of the \code{p} covariates considered in the model, the simulated 
 #' online trajectories related to the state parameter, the simulated BOLD responses,
-#'  and a measure to examine the goodness of fit of the model \mjseqn{(100 \ast |Y[i,j,k]_t - \hat{Y}[i,j,k]_t |/ \hat{Y}[i,j,k]_t )} for that particular voxel (FitnessV).
+#'  and a measure to examine the goodness of fit of the model \mjseqn{(100 \ast |Y[i,j,k]_t - \hat{Y}[i,j,k]_t |/ \hat{Y}[i,j,k]_t )} for that particular voxel (\code{FitnessV}).
 #' @examples 
-#' "See the Vignettes for examples."
+#' "See the Vignettes for detailed examples."
 #' @export
 
 GroupSingleVoxelFSTS <- function(posi.ffd, DatabaseGroup, covariates, m0, Cova, delta, S0, n0, N1, Nsimu1, r1, Cutpos){
