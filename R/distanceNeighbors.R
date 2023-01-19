@@ -1,5 +1,5 @@
-#' @name distanceNeighbors
-#' @title distanceNeighbors
+#' @name .distanceNeighbors 
+#' @title .distanceNeighbors 
 #' @description
 #' this is an internal function
 #' @references
@@ -11,8 +11,7 @@
 #' @param posi.refer  the position of the voxel in the brain image.
 #' @param r1 a positive integer number that defines the distance from every voxel with its most distant neighbor. This value determines the size of the cluster. The users can set a range of different r values: r = 0, 1, 2, 3, 4, which leads to q = 1, 7, 19, 27, 33, where q is the size of the cluster.
 #' @keywords internal
-#' @noRd
-distanceNeighbors <- function(posi.refer, r1){
+.distanceNeighbors  <- function(posi.refer, r1){
   
   if(r1==0){return(rbind(posi.refer))}
   

@@ -1,5 +1,5 @@
-#' @name ffdGroupVoxelFSTS
-#' @title ffdGroupVoxelFSTS
+#' @name .ffdGroupVoxelFSTS
+#' @title .ffdGroupVoxelFSTS
 #' @description
 #' this is an internal function
 #' @references
@@ -22,13 +22,12 @@
 #' @param Test test type either "LTT" (Average cluster effect) or "JointTest" (Joint effect).
 #' @param Cutpos a cutpoint time from where the on-line trajectories begin. This parameter value is related to an approximation from a t-student distribution to a normal distribution. Values equal to or greater than 30 are recommended (30<Cutpos1<T).  
 #' @keywords internal
-#' @noRd
-ffdGroupVoxelFSTS <- function(posi.ffd, DatabaseGroup, covariates, m0, Cova, delta, S0, n0, N1, Nsimu1, r1, Test, Cutpos){
+.ffdGroupVoxelFSTS <- function(posi.ffd, DatabaseGroup, covariates, m0, Cova, delta, S0, n0, N1, Nsimu1, r1, Test, Cutpos){
   
   
   if(r1 == 0){
     
-    posi <- distanceNeighbors(posi.refer = posi.ffd, r1)
+    posi <- .distanceNeighbors (posi.refer = posi.ffd, r1)
     Ngroup <- length(DatabaseGroup)
     #BOLD RESPONSE SERIES FOR A SPECIFIC CLUSTER
     series.group = NULL 
@@ -65,7 +64,7 @@ ffdGroupVoxelFSTS <- function(posi.ffd, DatabaseGroup, covariates, m0, Cova, del
        
        Ngroup <- length(DatabaseGroup)
        #THIS LINE RETURN THE POSITIONS OF EACH VOXEL INSIDE THE CLUSTER GIVEN THE DISTANCE r1
-       posi1 <- distanceNeighbors(posi.refer = posi.ffd, r1)
+       posi1 <- .distanceNeighbors (posi.refer = posi.ffd, r1)
        aux.pos <- dim(DatabaseGroup[[1]])[1:3]
        row_sub1 <- apply(posi1, 1, function(row, x1){0 < row & row<=x1}, x1=aux.pos)
        

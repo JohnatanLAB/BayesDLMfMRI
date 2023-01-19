@@ -1,5 +1,5 @@
-#' @name ffdSingleVoxelFETS
-#' @title ffdSingleVoxelFSTS
+#' @name .ffdSingleVoxelFETS
+#' @title .ffdSingleVoxelFSTS
 #' @description
 #' this is an internal function
 #' @references
@@ -25,13 +25,12 @@
 #' @param r1 a positive integer number that defines the distance from every voxel with its most distant neighbor. This value determines the size of the cluster. The users can set a range of different r values: r = 0, 1, 2, 3, 4, which leads to q = 1, 7, 19, 27, 33, where q is the size of the cluster.
 #' @param Test test type either "LTT" (Average cluster effect) or "JointTest" (Joint effect).
 #' @keywords internal
-#' @noRd
-ffdSingleVoxelFETS <- function(posi.ffd, covariates, ffdc, m0, Cova, delta, S0, n0, N1, Nsimu1, Cutpos1, Min.vol, r1, Test){
+.ffdSingleVoxelFETS <- function(posi.ffd, covariates, ffdc, m0, Cova, delta, S0, n0, N1, Nsimu1, Cutpos1, Min.vol, r1, Test){
   
   
   if(r1 == 0){
     
-    posi <- distanceNeighbors(posi.refer = as.vector(posi.ffd), r1)
+    posi <- .distanceNeighbors (posi.refer = as.vector(posi.ffd), r1)
     
     #BOLD RESPONSE SERIES IN THE CLUSTER RELATED TO posi
     series.def <- sapply(1:(dim(posi)[1]), function(k){ffdc[posi[k,1], posi[k,2], posi[k,3], ]})
@@ -67,7 +66,7 @@ ffdSingleVoxelFETS <- function(posi.ffd, covariates, ffdc, m0, Cova, delta, S0, 
   }else{
   
   #THIS LINE RETURN THE POSITIONS OF EACH VOXEL INSIDE THE CLUSTER GIVEN THE DISTANCE r1
-  posi1 <- distanceNeighbors(posi.refer = as.vector(posi.ffd), r1)
+  posi1 <- .distanceNeighbors (posi.refer = as.vector(posi.ffd), r1)
   
   
   aux.pos <- dim(ffdc)[1:3]

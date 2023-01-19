@@ -3,8 +3,7 @@
 \docType{data}
 \name{ffd}
 \alias{ffd}
-\title{ffd
-example overlay used in the vignettes.}
+\title{MNI image used to plot posterior probability maps in the vignette examples.}
 \format{
 An object of class \code{nifti} of dimension 91 x 109 x 91.
 }
@@ -12,8 +11,7 @@ An object of class \code{nifti} of dimension 91 x 109 x 91.
 ffd
 }
 \description{
-ffd
-example overlay used in the vignettes.
+MNI image used to plot posterior probability maps in the examples presented in the vignettes.
 }
 \examples{
 data("ffd", package="BayesDLMfMRI")

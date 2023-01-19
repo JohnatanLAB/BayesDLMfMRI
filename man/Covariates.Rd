@@ -3,8 +3,7 @@
 \docType{data}
 \name{Covariates}
 \alias{Covariates}
-\title{Covariates
-example covariates used in the vignettes.}
+\title{Covariates related to the observed BOLD response}
 \format{
 An object of class \code{data.frame} with 310 rows and 2 columns.
 }
@@ -12,8 +11,7 @@ An object of class \code{data.frame} with 310 rows and 2 columns.
 Covariates
 }
 \description{
-Covariates
-example covariates used in the vignettes.
+Covariates related to the observed BOLD response and its derivative used in the examples presented in the vignettes.
 }
 \examples{
 data("covariates", package="BayesDLMfMRI")

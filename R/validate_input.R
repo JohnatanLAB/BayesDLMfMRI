@@ -1,11 +1,10 @@
-#' @name get_n_cores
-#' @title get_n_cores
+#' @name .get_n_cores
+#' @title .get_n_cores
 #' @description
 #' return the number of cores.
 #' @param Ncores numer of cores
 #' @keywords internal
-#' @noRd
-get_n_cores  <- function(Ncores) {
+.get_n_cores  <- function(Ncores) {
 
     # check ncores
     if(!is.null(Ncores)) {
@@ -29,14 +28,13 @@ get_n_cores  <- function(Ncores) {
 
 }
 
-#' @name check_ffdgroup
-#' @title check_ffdgroup
+#' @name .check_ffdgroup
+#' @title .check_ffdgroup
 #' @description
 #' validate ffdGroup
 #' @param ffdGroup group
 #' @keywords internal
-#' @noRd
-check_ffdgroup  <- function(ffdGroup) {
+.check_ffdgroup  <- function(ffdGroup) {
 
     if(!is.list(ffdGroup)) {
         stop("ffdGroup must be a list.")
@@ -66,8 +64,8 @@ check_ffdgroup  <- function(ffdGroup) {
 
 }
 
-#' @name validate_input
-#' @title validate_input
+#' @name .validate_input
+#' @title .validate_input
 #' @description
 #' validate input
 #' @param N1 is the number of images (2<N1<T) from the ffdc array employed in the model fitting.N1=NULL (or equivalently N1=T) is its default value, taking all the images in the ffdc array for the fitting process.
@@ -86,16 +84,15 @@ check_ffdgroup  <- function(ffdGroup) {
 #' @param Cutpos1 a cutpoint time from where the on-line trajectories begin. This parameter value is related to an approximation from a t-student distribution to a normal distribution. Values equal to or greater than 30 are recommended (30<Cutpos1<T).  
 #' @param ffdGroup group
 #' @keywords internal
-#' @noRd
-validate_input  <- function(N1=NULL, Test=NULL, Nsimu1=NULL,
+.validate_input  <- function(N1=NULL, Test=NULL, Nsimu1=NULL,
                             ffdc=NULL, covariates=NULL,
                             r1 = NULL, delta=NULL, perVol=NULL,Min.vol=NULL,
                             n0 = NULL, Cutpos1=NULL, ffdGroup=NULL) {
 
 
-  # check_ffdgroup
+  # .check_ffdgroup
   if(!is.null(ffdGroup)) {
-    check_ffdgroup(ffdGroup)
+    .check_ffdgroup(ffdGroup)
   }
 
   # check perVol
