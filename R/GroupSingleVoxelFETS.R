@@ -33,7 +33,7 @@
 #' resSingle <- GroupSingleVoxelFEST(posi.ffd = c(14, 56, 40), DatabaseGroup,
 #'                                   covariates = Covariates, m0 = 0, Cova = 100, 
 #'                                   delta = 0.95, S0 = 1, n0 = 1, N1 = FALSE, 
-#'                                   Nsimu1 = 100, r1 = 1, Test = "Joint", Cutpos = 30)
+#'                                   Nsimu1 = 100, r1 = 1, Test = "JointTest", Cutpos = 30)
 #' }
 #' @export
 GroupSingleVoxelFETS <- function(posi.ffd, DatabaseGroup, 
@@ -72,9 +72,9 @@ GroupSingleVoxelFETS <- function(posi.ffd, DatabaseGroup,
     #case for single voxels
     if(any(series.group==0)){ 
       if(Test=="LTT"){return(NA)}
-      if(Test=="Joint"){return( NA )}}else{
+      if(Test=="JointTest"){return( NA )}}else{
                                        
-                                       if(Test=="Joint"){
+                                       if(Test=="JointTest"){
                                          Cova1 <- diag(rep(Cova, dim(covariates)[2]))
                                          delta1<- sqrt(delta)
                                          Beta1 <- diag(1/c(rep(delta1, dim(covariates)[2])))
@@ -109,7 +109,7 @@ GroupSingleVoxelFETS <- function(posi.ffd, DatabaseGroup,
                                          
                                          
                                          if(any(series.group[,1]==0)){if(Test=="LTT"){return(NA)}
-                                           if(Test=="Joint"){return(NA)}}else{
+                                           if(Test=="JointTest"){return(NA)}}else{
                                                                             flag <- any(series.group==0)
                                                                             
                                                                             Cova1 <- diag(rep(Cova, dim(covariates)[2]))
@@ -122,7 +122,7 @@ GroupSingleVoxelFETS <- function(posi.ffd, DatabaseGroup,
                                                                               return(res)
                                                                             }
                                                                             
-                                                                            if(Test=="Joint"){
+                                                                            if(Test=="JointTest"){
                                                                               
                                                                               res   <- .Group_FunctionalMultiTest(ffd1 = series.group, Cova = covariates, m0In = m0, c0In = Cova1, S0In = S0, 
                                                                                                               beta0In = Beta1, nt0In = n0, flag1 = sum(flag), NIn = N1, NS = Ngroup, Nsimu = Nsimu1, CUTpos = Cutpos)

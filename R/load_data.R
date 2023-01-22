@@ -14,49 +14,59 @@
 #' available on the online platform OpenNEURO \insertCite{gorgolewski2017openneuro}{BayesDLMfMRI}.
 #' @param save_path location where the data the example data is stored.
 #' @param force force the download, even if the data already exists.
+#' @param subject The example subject, must be 1 or 2.
 #' @return It returns an array of dimensions \code{[91, 109, 91, 310]}.
 #' @examples
 #' \dontrun{
 #' fMRI.data  <- get_example_fMRI_data()
 #' }
 #' @export
-get_example_fMRI_data <- function(save_path=NULL, force=FALSE) {
+get_example_fMRI_data <- function(save_path=NULL, force=FALSE, subject=1) {
   
   if(is.null(save_path)) {
     save_path  <- tempdir()
   }
+  
+  if(length(subject) > 1) {
+    "To load multiple subjects use get_example_fMRI_data_group"
+  }
+  
+  if(!(subject %in% c(1,2))) {
+    stop("The subject must be 1 or 2")
+  }
 
-  URL_1 <- "https://johnatanlab.github.io/files/test_1.rds"
-  URL_2 <- "https://johnatanlab.github.io/files/test_2.rds"
-  URL_3 <- "https://johnatanlab.github.io/files/test_3.rds"
+  if(subject == 1) {
+    
+    url_list <- c("https://johnatanlab.github.io/files/test_1.rds",
+                  "https://johnatanlab.github.io/files/test_2.rds",
+                  "https://johnatanlab.github.io/files/test_3.rds"
+    )
+    
+  } else {
+    url_list <- c("https://johnatanlab.github.io/files/test_s2_1.rds",
+                  "https://johnatanlab.github.io/files/test_s2_2.rds",
+                  "https://johnatanlab.github.io/files/test_s2_3.rds"
+    )
+  }
   
   dir.create(save_path, showWarnings = FALSE)
   
-  path_1 <- file.path(save_path,"test_1.rds")
-  path_2 <- file.path(save_path,"test_2.rds")
-  path_3 <- file.path(save_path,"test_3.rds")
+  result_list <- list()
   
-  if( (!file.exists(path_1)) & (!force)) {
-    download.file(URL_1, destfile=path_1, quiet=FALSE)
+  for(i in 1:length(url_list)) {
+    path_1 <- file.path(save_path,paste0("s",subject,"_test_",i,".rds") )
+    
+    if( (!file.exists(path_1)) & (!force)) {
+      download.file(url_list[i], destfile = path_1, quiet = FALSE)
+    }
+    
+    result_list[[i]] <- readRDS(path_1)
+    
   }
-  
-  if( (!file.exists(path_2)) & (!force)) {
-    download.file(URL_2, destfile=path_2, quiet=FALSE)
-  }
-  
-  if( (!file.exists(path_3)) & (!force)) {
-    download.file(URL_3, destfile=path_3, quiet=FALSE)
-  }
-  
-  d1 <- readRDS(path_1)
-  d2 <- readRDS(path_2)
-  d3 <- readRDS(path_3)
   
   temp <- oro.nifti::dim_
   
-  fMRI.data <- abind::abind(d1, d2, d3, along = 1)
-  
-
+  fMRI.data <- abind::abind(result_list, along = 1)
   
   return(fMRI.data)
 }
@@ -78,13 +88,22 @@ get_example_fMRI_data <- function(save_path=NULL, force=FALSE) {
 #' available on the online platform OpenNEURO \insertCite{gorgolewski2017openneuro}{BayesDLMfMRI}.
 #' @param save_path location where the data the example data is stored.
 #' @param force force the download, even if the data already exists.
-#' @return It returns an array of dimensions \code{[91, 109, 91, 310]}.
+#' @return It returns a list in which each element is an array of dimensions \code{[91, 109, 91, 310]}.
 #' @examples
 #' \dontrun{
 #' DatabaseGroup <- get_example_fMRI_data_group()
 #' }
 #' @export
 get_example_fMRI_data_group  <- function(save_path=NULL, force=FALSE) {
-
-
+  
+  result_list <- list()
+  
+  result_list[[1]] <- get_example_fMRI_data(save_path = save_path,
+                                            force = force, 
+                                            subject = 1)
+  
+  result_list[[2]] <- get_example_fMRI_data(save_path = save_path, 
+                                            force = force, 
+                                            subject = 2)
+  return(result_list)
 }

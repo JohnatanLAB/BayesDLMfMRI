@@ -63,11 +63,10 @@ ffdGroupEvidenceFFBS <- function(ffdGroup, covariates, m0=0, Cova=100,
     r1=r1
   )
 
+  covariates <- as.matrix(covariates)
+
   #TAKING THE POSITIONS FROM THE 4D IMAGE WITH NON-NULL VALUES 
   posiffd <- which(mask[,,] != 0, arr.ind = TRUE)
-  
-  
-  
   
   ffd.out <- pbapply::pbapply(posiffd, 1, .ffdGroupVoxelFFBS, ffdGroup, covariates, m0, Cova,
                               delta, S0, n0, N1, Nsimu1, r1, Cutpos, cl = Ncores)

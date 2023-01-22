@@ -41,10 +41,10 @@
     #case for single voxels
     if(any(series.group==0)){ 
       if(Test=="LTT"){return( rep(NA, dim(covariates)[2]))}
-      if(Test=="Joint"){return( list(EvidenceJoint = rep(NA, dim(covariates)[2]), 
+      if(Test=="JointTest"){return( list(EvidenceJoint = rep(NA, dim(covariates)[2]), 
                                          EvidenceMargin = rep(NA, dim(covariates)[2]) ) )}}else{
     
-     if(Test=="Joint"){
+     if(Test=="JointTest"){
        Cova1 <- diag(rep(Cova, dim(covariates)[2]))
        delta1<- sqrt(delta)
        Beta1 <-diag(1/c(delta1, delta1))
@@ -80,7 +80,7 @@
        
        
        if(any(series.group[,1]==0)){if(Test=="LTT"){return( rep(NA, dim(covariates)[2]))}
-         if(Test=="Joint"){return( list(EvidenceJoint = rep(NA, dim(covariates)[2]), 
+         if(Test=="JointTest"){return( list(EvidenceJoint = rep(NA, dim(covariates)[2]), 
                                         EvidenceMargin = rep(NA, dim(covariates)[2]) ) )}}else{
            flag <- any(series.group==0)
            
@@ -94,7 +94,7 @@
            return(as.vector(res$Eviden))
            }
            
-           if(Test=="Joint"){
+           if(Test=="JointTest"){
              
              res   <- .Group_FunctionalMultiTest(ffd1 = series.group, Cova = covariates, m0In = m0, c0In = Cova1, S0In = S0, 
                                                  beta0In = Beta1, nt0In = n0, flag1 = sum(flag), NIn = N1, NS = Ngroup, Nsimu = Nsimu1, CUTpos = Cutpos)

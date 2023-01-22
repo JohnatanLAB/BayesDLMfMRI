@@ -4,12 +4,14 @@
 \alias{get_example_fMRI_data}
 \title{get_example_fMRI_data}
 \usage{
-get_example_fMRI_data(save_path = NULL, force = FALSE)
+get_example_fMRI_data(save_path = NULL, force = FALSE, subject = 1)
 }
 \arguments{
 \item{save_path}{location where the data the example data is stored.}
 
 \item{force}{force the download, even if the data already exists.}
+
+\item{subject}{The example subject, must be 1 or 2.}
 }
 \value{
 It returns an array of dimensions \code{[91, 109, 91, 310]}.

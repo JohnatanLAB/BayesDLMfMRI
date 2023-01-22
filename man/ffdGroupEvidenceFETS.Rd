@@ -69,10 +69,11 @@ which is then employed to compute the activation evidence maps for the group usi
 \dontrun{
 DatabaseGroup <- get_example_fMRI_data_group()
 data("covariates", package="BayesDLMfMRI")
+data("mask", package="BayesDLMfMRI")
 res <- ffdGroupEvidenceFETS(ffdGroup = DatabaseGroup, covariates = Covariates, 
                             m0 = 0, Cova = 100, delta = 0.95, S0 = 1, 
                             n0 = 1, N1 = FALSE, Nsimu1 = 100, Cutpos=30, 
-                            r1 = 1, Test = "Joint", mask = MASK, Ncores = 7)
+                            r1 = 1, Test = "JointTest", mask = mask, Ncores = 7)
 str(res)
 }
 }

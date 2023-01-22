@@ -12,7 +12,7 @@ get_example_fMRI_data_group(save_path = NULL, force = FALSE)
 \item{force}{force the download, even if the data already exists.}
 }
 \value{
-It returns an array of dimensions \code{[91, 109, 91, 310]}.
+It returns a list in which each element is an array of dimensions \code{[91, 109, 91, 310]}.
 }
 \description{
 This function is used to download the example data used in the Vignettes.

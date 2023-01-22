@@ -16,7 +16,6 @@
   N1,
   Nsimu1,
   r1,
-  Test,
   Cutpos
 )
 }
@@ -42,8 +41,6 @@
 \item{Nsimu1}{is the number of simulated on-line trajectories related to the state parameters. These simulated curves are later employed to compute the posterior probability of voxel activation.}
 
 \item{r1}{a positive integer number that defines the distance from every voxel with its most distant neighbor. This value determines the size of the cluster. The users can set a range of different r values: r = 0, 1, 2, 3, 4, which leads to q = 1, 7, 19, 27, 33, where q is the size of the cluster.}
-
-\item{Test}{test type either "LTT" (Average cluster effect) or "JointTest" (Joint effect).}
 
 \item{Cutpos}{a cutpoint time from where the on-line trajectories begin. This parameter value is related to an approximation from a t-student distribution to a normal distribution. Values equal to or greater than 30 are recommended (30<Cutpos1<T).}
 }

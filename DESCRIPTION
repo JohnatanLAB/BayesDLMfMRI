@@ -10,7 +10,7 @@ Authors@R: c(
     person("Isabel", "Ramírez", email = "iscramirezgu@unal.edu.co", role = "aut"))
 Maintainer: Carlos Pérez <caaperezag@unal.edu.co>
 Description: The 'BayesDLMfMRI' package performs statistical analysis for 
-             task-based fMRI data at both individual and group levels. 
+             task-based functional magnetic resonance imaging (fMRI) data at both individual and group levels. 
              The analysis to detect brain activation at the individual level is based on modeling the fMRI 
              signal using Matrix-Variate Dynamic Linear Models (MDLM). 
              The analysis for the group stage is based on posterior distributions of the 
