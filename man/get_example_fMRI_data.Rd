@@ -27,7 +27,7 @@ localization of the voice-sensitive "temporal voice areas" (TVA) of the human au
 available on the online platform OpenNEURO \insertCite{gorgolewski2017openneuro}{BayesDLMfMRI}.
 }
 \examples{
-\dontrun{
+\donttest{
 fMRI.data  <- get_example_fMRI_data()
 }
 }

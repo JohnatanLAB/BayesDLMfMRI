@@ -5,7 +5,7 @@
 \alias{mask}
 \title{A 3D array that works as a brain of reference (MNI atlas).}
 \format{
-An object of class \code{nifti} of dimension 70 x 70 x 32.
+An object of class \code{nifti} of dimension 91 x 109 x 91.
 }
 \usage{
 mask
