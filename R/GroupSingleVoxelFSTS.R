@@ -53,7 +53,7 @@ GroupSingleVoxelFSTS <- function(posi.ffd, DatabaseGroup, covariates, m0, Cova, 
     Cutpos1=Cutpos
   )
 
-  
+  covariates  <- as.matrix(covariates)
   
   if(r1 == 0){
     

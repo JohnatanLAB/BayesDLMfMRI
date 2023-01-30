@@ -30,7 +30,7 @@
 #' \donttest{
 #' DatabaseGroup <- get_example_fMRI_data_group()
 #' data("covariates", package="BayesDLMfMRI")
-#' resSingle <- GroupSingleVoxelFEST(posi.ffd = c(14, 56, 40), DatabaseGroup,
+#' resSingle <- GroupSingleVoxelFETS(posi.ffd = c(14, 56, 40), DatabaseGroup,
 #'                                   covariates = Covariates, m0 = 0, Cova = 100, 
 #'                                   delta = 0.95, S0 = 1, n0 = 1, N1 = FALSE, 
 #'                                   Nsimu1 = 100, r1 = 1, Test = "JointTest", Cutpos = 30)
@@ -55,6 +55,7 @@ GroupSingleVoxelFETS <- function(posi.ffd, DatabaseGroup,
     Test=Test
   )
   
+  covariates  <- as.matrix(covariates)
   
   if(r1 == 0){
     

@@ -67,6 +67,9 @@ get_example_fMRI_data <- function(save_path=NULL, force=FALSE, subject=1) {
   temp <- oro.nifti::dim_
   
   fMRI.data <- abind::abind(result_list, along = 1)
+
+  attr(fMRI.data, "dimnames") <- NULL
+  fMRI.data <- unname(fMRI.data)
   
   return(fMRI.data)
 }
