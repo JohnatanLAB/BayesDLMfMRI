@@ -73,17 +73,9 @@ dim(res[[1]])
 
 The output for the ffdEvidenceFEST function depends on the type of Test set by the user.  For Test = "LTT" the function returns a list of the type res[[p]][x, y, z], where p represents the column position in the covariates matrix and [x, y, z] represent the voxel position in the brain image. Thus, for the "voice localizer" example res[[1]] and res[[2]] are the 3D arrays related to the evidence for brain activation associated to the BOLD response for the auditory stimuli and its derivative respectively. When Test = Joint the output returned is an array of the type res[[2*p]][x, y, z], with the first p elements of the array related to the Joint effect distribution and the rest of it to the Marginal effect distribution.
 
+
 ```{r}
-
-
-res.auxi <- res[[1]]
-data("ffd", package="BayesDLMfMRI") # used for overlay.
-Z.visual.c <- nifti(res.auxi, datatype=16)
-ortho2(ffd, ifelse(Z.visual.c > 0.95, Z.visual.c, NA),
-       col.y = heat.colors(50), ycolorbar = TRUE, ybreaks = seq(0.95, 1, by = 0.001))
-
-
-
+plot(res, overlay=ffd, index=1, col.y = heat.colors(50), ycolorbar = TRUE, ybreaks = seq(0.95, 1, by = 0.001))
 ```
 
 The neurobase package is one option available in R to visualize MRI images. In this example, we use its ortho2() function to plot the evidence activation map. The ffd data contains the MNI brain atlas, which is used in this example as a reference space for individual and group analysis. For a better understanding of the use of brain atlas, see Brett et al. [2002].

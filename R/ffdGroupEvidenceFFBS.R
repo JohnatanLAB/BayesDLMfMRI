@@ -89,6 +89,8 @@ ffdGroupEvidenceFFBS <- function(ffdGroup, covariates, m0=0, Cova=100,
     vol.evidence[[2]][ ,posiffd[ii,1], posiffd[ii,2], posiffd[ii,3]] <- ffd.out[[ii]]$EvidenceMargin
     vol.evidence[[3]][ ,posiffd[ii,1], posiffd[ii,2], posiffd[ii,3]] <- ffd.out[[ii]]$EvidenLTT
   }
+
+  attr(vol.evidence, "class") <- "fMRI_group_evidence"
   
   return(vol.evidence)
   

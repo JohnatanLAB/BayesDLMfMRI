@@ -88,7 +88,8 @@ ffdGroupEvidenceFETS <- function(ffdGroup, covariates, m0=0, Cova=100,
         vol.evidence[[j]][posiffd[i,1], posiffd[i,2], posiffd[i,3]] <- ffd.out[j, i]
       }
     }
-    
+
+    attr(vol.evidence, "class") <- "fMRI_group_evidence"
     return(vol.evidence)
     
   }
@@ -114,7 +115,8 @@ ffdGroupEvidenceFETS <- function(ffdGroup, covariates, m0=0, Cova=100,
       }
     }
     
-    
+    attr(vol.evidence, "class") <- "fMRI_group_evidence"
+
     return(vol.evidence)
     
   }

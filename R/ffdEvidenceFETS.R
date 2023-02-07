@@ -86,7 +86,8 @@ ffdEvidenceFETS = function(ffdc, covariates, m0=0, Cova=100,
         vol.evidence[[j]][posiffd1[ii,1], posiffd1[ii,2], posiffd1[ii,3]] <- ffd.out[j, ii]
       }
     }
-    
+
+    attr(vol.evidence, "class") <- "fMRI_single_evidence"
     return(vol.evidence) 
   }
   if(Test == "JointTest"){
@@ -111,7 +112,7 @@ ffdEvidenceFETS = function(ffdc, covariates, m0=0, Cova=100,
         vol.evidence[[Ntest+j]][posiffd1[ii,1], posiffd1[ii,2], posiffd1[ii,3]] <- ffd.out[[ii]]$EvidenceMargin[j]
       }
     }
-    
+    attr(vol.evidence, "class") <- "fMRI_single_evidence"
     return(vol.evidence)
   }
   

@@ -89,6 +89,7 @@ ffdEvidenceFSTS = function(ffdc, covariates, m0=0, Cova=100,
     vol.evidence[[3]][ ,posiffd1[ii,1], posiffd1[ii,2], posiffd1[ii,3]] <- ffd.out[[ii]]$EvidenLTT
   }
   
+  attr(vol.evidence, "class") <- "fMRI_single_evidence"
   return(vol.evidence)
   
   
