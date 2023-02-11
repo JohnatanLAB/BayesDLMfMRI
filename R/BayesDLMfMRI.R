@@ -40,7 +40,8 @@ NULL
 #' Summary function
 #' @details
 #' Summary function
-#' @param res is the returned value of any of the fdGroupEvidence* functions
+#' @param object is the returned value of any of the fdGroupEvidence* functions
+#' @param ... Other potential arguments
 #' @examples
 #' \donttest{
 #' DatabaseGroup <- get_example_fMRI_data_group()
@@ -53,17 +54,18 @@ NULL
 #' summary(res)
 #' }
 #' @export
-print.fMRI_group_evidence  <- function(res) {
-    str(res)
+summary.fMRI_group_evidence  <- function(object, ...) {
+    str(object)
 }
 
 #' @name print.fMRI_group_evidence
 #' @title print.fMRI_group_evidence
 #' @description
-#' print function
+#' Print the structure of the object related to the ffdGroupEvidence* functions.
 #' @details
-#' print function
-#' @param res is the returned value of any of the fdGroupEvidence* functions
+#' Print the structure of the object related to the ffdGroupEvidence* functions.
+#' @param x is the returned value of any of the ffdGroupEvidence* functions
+#' @param ... Other potential arguments
 #' @examples
 #' \donttest{
 #' DatabaseGroup <- get_example_fMRI_data_group()
@@ -76,8 +78,8 @@ print.fMRI_group_evidence  <- function(res) {
 #' print(res)
 #' }
 #' @export
-print.fMRI_group_evidence  <- function(res) {
-    str(res)
+print.fMRI_group_evidence  <- function(x, ...) {
+    str(x)
 }
 
 #' @name summary.fMRI_single_evidence
@@ -86,7 +88,8 @@ print.fMRI_group_evidence  <- function(res) {
 #' Summary function
 #' @details
 #' Summary function
-#' @param res is returned value of any of the ffdEvidence* functions
+#' @param object is the returned value of any of the ffdEvidence* functions
+#' @param ... Other potential arguments
 #' @examples
 #' \donttest{
 #' fMRI.data  <- get_example_fMRI_data()
@@ -98,18 +101,19 @@ print.fMRI_group_evidence  <- function(res) {
 #' summary(res)
 #' }
 #' @export
-summary.fMRI_single_evidence  <- function(res) {
-    str(res)
+summary.fMRI_single_evidence  <- function(object, ...) {
+    str(object)
 }
 
 
 #' @name print.fMRI_single_evidence
 #' @title print.fMRI_single_evidence
 #' @description
-#' Print function
+#' Print the structure of the object related to the ffdEvidence* functions.
 #' @details
-#' Print function
-#' @param res is returned value of any of the ffdEvidence* functions
+#' Print the structure of the object related to the ffdEvidence* functions.
+#' @param x is the returned value of any of the ffdEvidence* functions
+#' @param ... Other potential arguments
 #' @examples
 #' \donttest{
 #' fMRI.data  <- get_example_fMRI_data()
@@ -121,8 +125,8 @@ summary.fMRI_single_evidence  <- function(res) {
 #' print(res)
 #' }
 #' @export
-print.fMRI_single_evidence  <- function(res) {
-    str(res)
+print.fMRI_single_evidence  <- function(x, ...) {
+    str(x)
 }
 
 
@@ -132,10 +136,11 @@ print.fMRI_single_evidence  <- function(res) {
 #' Plot function
 #' @details
 #' Plot function
-#' @param res is returned value of any of the ffdEvidence* functions.
+#' @param x is the returned value of any of the ffdEvidence* functions.
 #' @param overlay MNI image used to plot posterior probability maps. 
 #' @param index the element of \code{res} to be plotted.
-#' @param ... aditional parameters passed to the \code{ortho2} function.
+#' @param index2 the element of \code{res} to be plotted, only used if needed.
+#' @param ... additional parameters passed to the \code{ortho2} function.
 #' @examples
 #' \donttest{
 #' fMRI.data  <- get_example_fMRI_data()
@@ -146,20 +151,84 @@ print.fMRI_single_evidence  <- function(res) {
 #'                    m0 = 0, Cova = 100, delta = 0.95,
 #'                    S0 = 1, n0 = 1, Nsimu1 = 100, Cutpos1 = 30,
 #'                    r1 = 1, Test = "LTT", Ncores = 15)
-#' plot(res, overlay=ffd, index=1, col.y = heat.colors(50), ycolorbar = TRUE, ybreaks = seq(0.95, 1, by = 0.001))
+#' plot(res, overlay=ffd, index=1, col.y = heat.colors(50), 
+#'      ycolorbar = TRUE, ybreaks = seq(0.95, 1, by = 0.001))
 #' }
 #' @export
-plot.fMRI_single_evidence  <- function(res, overlay, index, ...) {
+plot.fMRI_single_evidence  <- function(x, overlay, index, index2=NULL, ...) {
+  
+  res <- x
+
+  if( (index > length(res)) | (1 > index) ) {
+    stop("index out of range")
+  }
+
+  res.auxi <- res[[index]]
+  
+  if(length(dim(res.auxi)) > length(dim(overlay))) {
     
-    if( (index > length(res)) | (1 > index) ) {
-        stop("index out of range")
+    if(is.null(index2)) {
+      stop("you must provide a second index using index2")
     }
-
-    res.auxi <- res[[index]]
-
-    Z.visual.c <- oro.nifti::nifti(res.auxi, datatype=16)
-    neurobase::ortho2(x=overlay, y=ifelse(Z.visual.c > 0.95, Z.visual.c, NA), ...)
+    
+    if( (index2 > (dim(res.auxi)[1]) ) | (1 > index2) ) {
+      stop("index out of range")
+    }
+    
+    res.auxi <- res.auxi[index,,,]
+    
+  }
+  
+  Z.visual.c <- oro.nifti::nifti(res.auxi, datatype=16)
+  neurobase::ortho2(x=overlay, y=ifelse(Z.visual.c > 0.95, Z.visual.c, NA), ...)
 }
 
 
+#' @name print.fMRI_single_voxel
+#' @title print.fMRI_single_voxel
+#' @description
+#' Print the structure of the object related to the SingleVoxel* functions.
+#' @details
+#' Print the structure of the object related to the SingleVoxel* functions.
+#' @param x is the returned value of any of the SingleVoxel* functions,
+#' @param ... Other potential arguments
+#' @examples
+#' \donttest{
+#' fMRI.data  <- get_example_fMRI_data()
+#' data("covariates", package="BayesDLMfMRI")
+#' res.indi <- SingleVoxelFSTS(posi.ffd = c(14, 56, 40), 
+#'                             covariates = Covariates,
+#'                             ffdc =  fMRI.data, 
+#'                             m0 = 0, Cova = 100, delta = 0.95, S0 = 1, 
+#'                             n0 = 1, Nsimu1 = 100, N1 = N1, Cutpos1 = 30, 
+#'                             Min.vol = 0.10, r1 = 1)
+#' print(res.indi)
+#' }
+#' @export
+print.fMRI_single_voxel  <- function(x, ...) {
+    str(x)
+}
+
+#' @name print.fMRI_group_single_voxel
+#' @title print.fMRI_group_single_voxel
+#' @description
+#' Print the structure of the object related to the SingleVoxel* functions.
+#' @details
+#' Print the structure of the object related to the GroupSingleVoxel* functions.
+#' @param x is the returned value of any of the GroupSingleVoxel* functions
+#' @param ... Other potential arguments
+#' @examples
+#' \donttest{
+#' DatabaseGroup <- get_example_fMRI_data_group()
+#' data("covariates", package="BayesDLMfMRI")
+#' res <- GroupSingleVoxelFFBS(posi.ffd = c(14, 56, 40), DatabaseGroup,
+#'                             covariates = Covariates, m0 = 0, Cova = 100, 
+#'                             delta = 0.95, S0 = 1, n0 = 1, N1 = FALSE, 
+#'                             Nsimu1 = 100, r1 = 1, Cutpos = 30)
+#' print(res)
+#' }
+#' @export
+print.fMRI_group_single_voxel  <- function(x, ...) {
+    str(x)
+}
 

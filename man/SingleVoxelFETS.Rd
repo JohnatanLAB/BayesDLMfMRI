@@ -73,7 +73,7 @@ res.indi <- SingleVoxelFETS(posi.ffd = c(14, 56, 40),
                             covariates = Covariates,
                             ffdc =  fMRI.data, 
                             m0 = 0, Cova = 100, delta = 0.95, S0 = 1, 
-                            n0 = 1, Nsimu1 = 100, N1 = N1, Cutpos1 = 30, 
+                            n0 = 1, Nsimu1 = 100, N1 = FALSE, Cutpos1 = 30, 
                             Min.vol = 0.10, r1 = 1, Test = "LTT")
 
 }

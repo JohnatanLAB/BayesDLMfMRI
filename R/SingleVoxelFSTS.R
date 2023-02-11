@@ -38,7 +38,7 @@
 #'                             covariates = Covariates,
 #'                             ffdc =  fMRI.data, 
 #'                             m0 = 0, Cova = 100, delta = 0.95, S0 = 1, 
-#'                             n0 = 1, Nsimu1 = 100, N1 = N1, Cutpos1 = 30, 
+#'                             n0 = 1, Nsimu1 = 100, N1 = FALSE, Cutpos1 = 30, 
 #'                             Min.vol = 0.10, r1 = 1)
 #' 
 #' }
@@ -46,7 +46,10 @@
 SingleVoxelFSTS <- function(posi.ffd, covariates, ffdc, m0, 
                             Cova, delta, S0, n0, N1, 
                             Nsimu1, Cutpos1, Min.vol, r1){
-  
+  if(is.logical(N1)) {
+    if(N1==FALSE){N1 = dim(covariates)[1]}
+  }
+
   .validate_input(
     covariates=covariates,
     ffdc = ffdc,
@@ -81,7 +84,9 @@ SingleVoxelFSTS <- function(posi.ffd, covariates, ffdc, m0,
         res <- .Individual_Functional_States(ffd1 = as.matrix(series.def), Cova = as.matrix(covariates), m0In = m01, c0In = Cova1, 
                                              S0In = S01, beta0In = Beta1, nt0In = n0, NIn = N1, Nsimu = Nsimu1, CUTpos = Cutpos1)
         
-        return(list(EvidenceJoint = as.vector(res$Eviden_joint), EvidenceMargin = as.vector(res$Eviden_margin), EvidenLTT=as.vector(res$eviden_lt)))
+        res  <- list(EvidenceJoint = as.vector(res$Eviden_joint), EvidenceMargin = as.vector(res$Eviden_margin), EvidenLTT=as.vector(res$eviden_lt))
+        attr(res, "class") <- "fMRI_single_voxel"
+        return(res)
         
       }
   }else{
@@ -128,12 +133,9 @@ SingleVoxelFSTS <- function(posi.ffd, covariates, ffdc, m0,
                                            S0In = S01, beta0In = Beta1, nt0In = n0, NIn = N1, Nsimu = Nsimu1, CUTpos = Cutpos1)
       
       #EVIDENCE OF ACTIVATION FOR A SINGLE VOXEL TAKING INTO ACCOUNT THE INFORMATION OF THE ENTIRE CLUSTER OF SIZE q
+      attr(res, "class") <- "fMRI_single_voxel"
       return(res)
-      
-      
-      
-      
-      
+
     }
     
   }

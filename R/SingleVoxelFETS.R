@@ -38,7 +38,7 @@
 #'                             covariates = Covariates,
 #'                             ffdc =  fMRI.data, 
 #'                             m0 = 0, Cova = 100, delta = 0.95, S0 = 1, 
-#'                             n0 = 1, Nsimu1 = 100, N1 = N1, Cutpos1 = 30, 
+#'                             n0 = 1, Nsimu1 = 100, N1 = FALSE, Cutpos1 = 30, 
 #'                             Min.vol = 0.10, r1 = 1, Test = "LTT")
 #' 
 #' }
@@ -47,6 +47,10 @@ SingleVoxelFETS <- function(posi.ffd, covariates, ffdc, m0, Cova, delta,
                             S0, n0, N1, Nsimu1, Cutpos1, 
                             Min.vol, r1, Test){
 
+  if(is.logical(N1)) {
+    if(N1==FALSE){N1 = dim(covariates)[1]}
+  }
+  
   .validate_input(
     covariates=covariates,
     ffdc = ffdc,
@@ -88,8 +92,9 @@ SingleVoxelFETS <- function(posi.ffd, covariates, ffdc, m0, Cova, delta,
                                            if(Test=="JointTest"){
                                              res <- .Individual_FunctionalMultiTest(ffd1 = as.matrix(series.def), Cova = as.matrix(covariates), m0In = m01, c0In = Cova1, 
                                                                                     S0In = S01, beta0In = Beta1, nt0In = n0, NIn = N1, Nsimu = Nsimu1, CUTpos = Cutpos1)
-                                             
-                                             return(list(EvidenceJoint = rep(NA, dim(covariates)[2]), EvidenceMargin = res$EvidenMarginal))
+                                             res  <- list(EvidenceJoint = rep(NA, dim(covariates)[2]), EvidenceMargin = res$EvidenMarginal)
+                                             attr(res, "class") <- "fMRI_single_voxel"
+                                             return(res)
                                              
                                              
                                            }
@@ -144,6 +149,7 @@ SingleVoxelFETS <- function(posi.ffd, covariates, ffdc, m0, Cova, delta,
                                                                                  beta0In = Beta1, nt0In = n0, NIn = N1, Nsimu = Nsimu1, CUTpos = Cutpos1)
                                              
                                              #EVIDENCE OF ACTIVATION FOR A SINGLE VOXEL TAKING INTO ACCOUNT THE INFORMATION OF THE ENTIRE CLUSTER OF SIZE q
+                                             attr(res, "class") <- "fMRI_single_voxel"
                                              return(res)
                                            }
                                            
@@ -152,6 +158,7 @@ SingleVoxelFETS <- function(posi.ffd, covariates, ffdc, m0, Cova, delta,
                                                                                     S0In = S01, beta0In = Beta1, nt0In = n0, NIn = N1, Nsimu = Nsimu1, CUTpos = Cutpos1)
                                              
                                              #EVIDENCE OF ACTIVATION FOR A SINGLE VOXEL TAKING INTO ACCOUNT THE INFORMATION OF THE ENTIRE CLUSTER OF SIZE q
+                                             attr(res, "class") <- "fMRI_single_voxel"
                                              return(res)
                                              
                                              
