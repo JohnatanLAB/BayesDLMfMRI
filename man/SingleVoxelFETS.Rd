@@ -66,7 +66,8 @@ This function is used to perform an activation analysis for single voxels based 
 This function allows the development of an activation analysis for single voxels. A multivariate dynamic linear model is fitted to a cluster of voxels, with its center at location \code{(i,j,k)}, in the way it is presented in \insertCite{CARDONAJIMENEZ2021107297}{BayesDLMfMRI}.
 }
 \examples{
-\donttest{
+\dontrun{
+# This example can take a long time to run.
 fMRI.data  <- get_example_fMRI_data()
 data("covariates", package="BayesDLMfMRI")
 res.indi <- SingleVoxelFETS(posi.ffd = c(14, 56, 40), 

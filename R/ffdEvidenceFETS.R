@@ -32,13 +32,13 @@
 #' @return It returns a list of the type \code{res[[p]][x,y,z]}, where \code{p} represents the column position in
 #' the covariates matrix and \code{[x,y,z]} represent the voxel position in the brain image.
 #' @examples
-#' \donttest{
+#'\dontrun{
 #' fMRI.data  <- get_example_fMRI_data()
 #' data("covariates", package="BayesDLMfMRI")
 #' res <- ffdEvidenceFETS(ffdc = fMRI.data, covariates = Covariates,
 #'                        m0 = 0, Cova = 100, delta = 0.95, S0 = 1, 
 #'                        n0 = 1, Nsimu1 = 100, Cutpos1 = 30, 
-#'                        r1 = 2, Test = "JointTest",  Ncores = 3)
+#'                        r1 = 2, Test = "JointTest",  Ncores = 1)
 #' str(res)
 #' }
 #' @export

@@ -26,7 +26,8 @@
 #' online trajectories related to the state parameter, the simulated BOLD responses,
 #'  and a measure to examine the goodness of fit of the model \mjseqn{(100 \ast |Y[i,j,k]_t - \hat{Y}[i,j,k]_t |/ \hat{Y}[i,j,k]_t )} for that particular voxel (\code{FitnessV}).
 #' @examples
-#' \donttest{
+#'\dontrun{
+#' # This example can take a long time to run.
 #' DatabaseGroup <- get_example_fMRI_data_group()
 #' data("covariates", package="BayesDLMfMRI")
 #' resSingle <- GroupSingleVoxelFFBS(posi.ffd = c(14, 56, 40), DatabaseGroup,

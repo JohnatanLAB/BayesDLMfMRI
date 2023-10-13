@@ -32,7 +32,7 @@
 #' the activation maps related to each column of the covariates matrix respectively when computing the activation evidence using either
 #' \code{Test=="LTT"} or \code{Test=="JointTest"}. The remaining activation maps are those associated with the marginal distribution.
 #' @examples
-#' \donttest{
+#'\dontrun{
 #' DatabaseGroup <- get_example_fMRI_data_group()
 #' data("covariates", package="BayesDLMfMRI")
 #' data("mask", package="BayesDLMfMRI")

@@ -1,8 +1,8 @@
 Package: BayesDLMfMRI
 Type: Package
 Title: Statistical Analysis for Task-Based Fmri Data
-Version: 0.0.2
-Date: 2023-01-23
+Version: 0.0.3
+Date: 2023-09-06
 URL: https://github.com/JohnatanLAB/BayesDLMfMRI/
 Authors@R: c(
     person("Johnatan", "Cardona-Jiménez", email = "jcardonj@unal.edu.co", role = "aut"),

@@ -67,13 +67,13 @@ Every voxel from the 4D array image is clustered with its nearest neighbors. The
 The resulting activation evidence measure for every voxel is obtained using the Forward Estimated Trajectories Sampler (FETS) algorithm. To deeply understand the method implemented in this package, a reading of \insertCite{CARDONAJIMENEZ2021107297}{BayesDLMfMRI} and \insertCite{cardona2021bayesdlmfmri}{BayesDLMfMRI} is mandatory.
 }
 \examples{
-\donttest{
+\dontrun{
 fMRI.data  <- get_example_fMRI_data()
 data("covariates", package="BayesDLMfMRI")
 res <- ffdEvidenceFETS(ffdc = fMRI.data, covariates = Covariates,
                        m0 = 0, Cova = 100, delta = 0.95, S0 = 1, 
                        n0 = 1, Nsimu1 = 100, Cutpos1 = 30, 
-                       r1 = 2, Test = "JointTest",  Ncores = 3)
+                       r1 = 2, Test = "JointTest",  Ncores = 1)
 str(res)
 }
 }

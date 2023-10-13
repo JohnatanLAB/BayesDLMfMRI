@@ -18,7 +18,7 @@ Summary function
 Summary function
 }
 \examples{
-\donttest{
+\dontrun{
 DatabaseGroup <- get_example_fMRI_data_group()
 data("covariates", package="BayesDLMfMRI")
 data("mask", package="BayesDLMfMRI")

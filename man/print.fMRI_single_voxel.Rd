@@ -18,7 +18,7 @@ Print the structure of the object related to the SingleVoxel* functions.
 Print the structure of the object related to the SingleVoxel* functions.
 }
 \examples{
-\donttest{
+\dontrun{
 fMRI.data  <- get_example_fMRI_data()
 data("covariates", package="BayesDLMfMRI")
 res.indi <- SingleVoxelFSTS(posi.ffd = c(14, 56, 40), 

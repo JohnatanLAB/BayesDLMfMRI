@@ -58,7 +58,8 @@ This function is used to perform a group activation analysis for single voxels b
 This function allows the performance of a group activation analysis for single voxels. A multivariate dynamic linear model is fitted to a cluster of voxels, with its center at location (i,j,k), in the way it is presented in \insertCite{CARDONAJIMENEZ2021107297}{BayesDLMfMRI}.
 }
 \examples{
-\donttest{
+\dontrun{
+# This example can take a long time to run.
 DatabaseGroup <- get_example_fMRI_data_group()
 data("covariates", package="BayesDLMfMRI")
 resSingle <- GroupSingleVoxelFFBS(posi.ffd = c(14, 56, 40), DatabaseGroup,

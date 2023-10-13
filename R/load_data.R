@@ -17,7 +17,8 @@
 #' @param subject The example subject, must be 1 or 2.
 #' @return It returns an array of dimensions \code{[91, 109, 91, 310]}.
 #' @examples
-#' \donttest{
+#'\dontrun{
+#' # This example can take a long time to run.
 #' fMRI.data  <- get_example_fMRI_data()
 #' }
 #' @export
@@ -93,7 +94,8 @@ get_example_fMRI_data <- function(save_path=NULL, force=FALSE, subject=1) {
 #' @param force force the download, even if the data already exists.
 #' @return It returns a list in which each element is an array of dimensions \code{[91, 109, 91, 310]}.
 #' @examples
-#' \donttest{
+#'\dontrun{
+#' # This example can take a long time to run.
 #' DatabaseGroup <- get_example_fMRI_data_group()
 #' }
 #' @export

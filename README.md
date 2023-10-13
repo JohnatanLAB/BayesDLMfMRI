@@ -18,7 +18,7 @@ library(neurobase)
 
 
 fMRI.data <- get_example_fMRI_data() 
-data("covariates", package="BayesDLMfMRI")
+data("covariates", package="BayesDLMfMRI") 
 
 res <- ffdEvidenceFETS(ffdc = fMRI.data,
                     covariates = Covariates,

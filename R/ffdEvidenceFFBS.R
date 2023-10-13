@@ -28,7 +28,7 @@
 #' @param seed random seed.
 #' @return  It returns a list of the form \code{res[[k]][p,x,y,z]}, where \code{k} defines the type of test (\code{k = 1} for \code{"Marginal"}, \code{k = 2} for \code{"JointTest"}, and \code{k = 3} for \code{"LTT"}), \code{p} represents the column position in the covariates matrix and \code{x,y,z} represent the voxel position in the brain image.
 #' @examples
-#' \donttest{
+#'\dontrun{
 #' fMRI.data  <- get_example_fMRI_data()
 #' data("covariates", package="BayesDLMfMRI")
 #' res <- ffdEvidenceFFBS(ffdc = fMRI.data, covariates = Covariates, m0=0, Cova=100,

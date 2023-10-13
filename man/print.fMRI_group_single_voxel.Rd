@@ -18,7 +18,7 @@ Print the structure of the object related to the SingleVoxel* functions.
 Print the structure of the object related to the GroupSingleVoxel* functions.
 }
 \examples{
-\donttest{
+\dontrun{
 DatabaseGroup <- get_example_fMRI_data_group()
 data("covariates", package="BayesDLMfMRI")
 res <- GroupSingleVoxelFFBS(posi.ffd = c(14, 56, 40), DatabaseGroup,

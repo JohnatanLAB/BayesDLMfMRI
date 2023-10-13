@@ -18,7 +18,7 @@ Summary function
 Summary function
 }
 \examples{
-\donttest{
+\dontrun{
 fMRI.data  <- get_example_fMRI_data()
 data("covariates", package="BayesDLMfMRI")
 res <- ffdEvidenceFFBS(ffdc = fMRI.data, covariates = Covariates, m0=0, Cova=100,

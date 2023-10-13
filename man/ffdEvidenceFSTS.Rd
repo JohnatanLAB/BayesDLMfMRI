@@ -62,7 +62,7 @@ This function can be used to build activation maps for task-based fMRI data.
 Every voxel from the 4D array image is clustered with its nearest neighbors. There are as many clusters as voxels in the image. Then, activation maps are obtained by fitting a multivariate dynamic linear model on every cluster of voxels. The resulting activation evidence measure for every voxel is obtained by using the Forward State Trajectories Sampler (FSTS) algorithm. To deeply understand the method implemented in this package, a reading of \insertCite{CARDONAJIMENEZ2021107297}{BayesDLMfMRI} and \insertCite{cardona2021bayesdlmfmri}{BayesDLMfMRI} is mandatory.
 }
 \examples{
-\donttest{
+\dontrun{
 fMRI.data  <- get_example_fMRI_data()
 data("covariates", package="BayesDLMfMRI")
 res <- ffdEvidenceFSTS(ffdc = fMRI.data, covariates = Covariates, m0=0, Cova=100,

@@ -62,7 +62,8 @@ However, at this stage, the posterior distributions from all the subjects are co
 which is then employed to compute the activation evidence maps for the group using the Forward State Trajectories Sampler (FSTS) algorithm To deeply understand the method implemented in this package, a reading of \insertCite{CARDONAJIMENEZ2021107297}{BayesDLMfMRI} and \insertCite{cardona2021bayesdlmfmri}{BayesDLMfMRI} is mandatory.
 }
 \examples{
-\donttest{
+\dontrun{
+# This example can take a long time to run.
 DatabaseGroup <- get_example_fMRI_data_group()
 data("covariates", package="BayesDLMfMRI")
 res <- ffdGroupEvidenceFSTS(ffdGroup = DatabaseGroup, covariates = Covariates, 

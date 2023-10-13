@@ -24,7 +24,7 @@ Plot function
 Plot function
 }
 \examples{
-\donttest{
+\dontrun{
 fMRI.data  <- get_example_fMRI_data()
 data("covariates", package="BayesDLMfMRI")
 data("ffd", package="BayesDLMfMRI") # used for overlay.

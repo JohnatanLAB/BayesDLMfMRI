@@ -18,7 +18,7 @@ Print the structure of the object related to the ffdGroupEvidence* functions.
 Print the structure of the object related to the ffdGroupEvidence* functions.
 }
 \examples{
-\donttest{
+\dontrun{
 DatabaseGroup <- get_example_fMRI_data_group()
 data("covariates", package="BayesDLMfMRI")
 data("mask", package="BayesDLMfMRI")

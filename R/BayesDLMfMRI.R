@@ -8,6 +8,7 @@
 #' Contributor: Isabel Ramírez \email{iscramirezgu@unal.edu.co} 
 #' @docType package
 #' @name BayesDLMfMRI
+#' @aliases BayesDLMfMRI-package
 #' @useDynLib BayesDLMfMRI , .registration=TRUE
 #' @exportPattern "^[[:alpha:]]+"
 #' @import mathjaxr
@@ -43,7 +44,7 @@ NULL
 #' @param object is the returned value of any of the fdGroupEvidence* functions
 #' @param ... Other potential arguments
 #' @examples
-#' \donttest{
+#'\dontrun{
 #' DatabaseGroup <- get_example_fMRI_data_group()
 #' data("covariates", package="BayesDLMfMRI")
 #' data("mask", package="BayesDLMfMRI")
@@ -67,7 +68,7 @@ summary.fMRI_group_evidence  <- function(object, ...) {
 #' @param x is the returned value of any of the ffdGroupEvidence* functions
 #' @param ... Other potential arguments
 #' @examples
-#' \donttest{
+#'\dontrun{
 #' DatabaseGroup <- get_example_fMRI_data_group()
 #' data("covariates", package="BayesDLMfMRI")
 #' data("mask", package="BayesDLMfMRI")
@@ -91,7 +92,7 @@ print.fMRI_group_evidence  <- function(x, ...) {
 #' @param object is the returned value of any of the ffdEvidence* functions
 #' @param ... Other potential arguments
 #' @examples
-#' \donttest{
+#'\dontrun{
 #' fMRI.data  <- get_example_fMRI_data()
 #' data("covariates", package="BayesDLMfMRI")
 #' res <- ffdEvidenceFFBS(ffdc = fMRI.data, covariates = Covariates, m0=0, Cova=100,
@@ -115,7 +116,7 @@ summary.fMRI_single_evidence  <- function(object, ...) {
 #' @param x is the returned value of any of the ffdEvidence* functions
 #' @param ... Other potential arguments
 #' @examples
-#' \donttest{
+#'\dontrun{
 #' fMRI.data  <- get_example_fMRI_data()
 #' data("covariates", package="BayesDLMfMRI")
 #' res <- ffdEvidenceFFBS(ffdc = fMRI.data, covariates = Covariates, m0=0, Cova=100,
@@ -142,7 +143,7 @@ print.fMRI_single_evidence  <- function(x, ...) {
 #' @param index2 the element of \code{res} to be plotted, only used if needed.
 #' @param ... additional parameters passed to the \code{ortho2} function.
 #' @examples
-#' \donttest{
+#'\dontrun{
 #' fMRI.data  <- get_example_fMRI_data()
 #' data("covariates", package="BayesDLMfMRI")
 #' data("ffd", package="BayesDLMfMRI") # used for overlay.
@@ -193,7 +194,7 @@ plot.fMRI_single_evidence  <- function(x, overlay, index, index2=NULL, ...) {
 #' @param x is the returned value of any of the SingleVoxel* functions,
 #' @param ... Other potential arguments
 #' @examples
-#' \donttest{
+#'\dontrun{
 #' fMRI.data  <- get_example_fMRI_data()
 #' data("covariates", package="BayesDLMfMRI")
 #' res.indi <- SingleVoxelFSTS(posi.ffd = c(14, 56, 40), 
@@ -218,7 +219,7 @@ print.fMRI_single_voxel  <- function(x, ...) {
 #' @param x is the returned value of any of the GroupSingleVoxel* functions
 #' @param ... Other potential arguments
 #' @examples
-#' \donttest{
+#'\dontrun{
 #' DatabaseGroup <- get_example_fMRI_data_group()
 #' data("covariates", package="BayesDLMfMRI")
 #' res <- GroupSingleVoxelFFBS(posi.ffd = c(14, 56, 40), DatabaseGroup,

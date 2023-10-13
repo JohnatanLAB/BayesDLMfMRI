@@ -30,7 +30,8 @@
 #'  (\code{k = 1} for Marginal effect, \code{k = 2} for Joint effect, and \code{k = 3} for Average cluster effect), \code{p} represents the column 
 #'  position in the covariates matrix and \code{x,y,z} represent the voxel position in the brain image.
 #' @examples
-#' \donttest{
+#'\dontrun{
+#' # This example can take a long time to run.
 #' DatabaseGroup <- get_example_fMRI_data_group()
 #' data("covariates", package="BayesDLMfMRI")
 #' res <- ffdGroupEvidenceFFBS(ffdGroup = DatabaseGroup, covariates = Covariates, 
