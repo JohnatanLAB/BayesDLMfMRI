@@ -65,7 +65,7 @@ ffdEvidenceFETS = function(ffdc, covariates, m0=0, Cova=100,
   #TAKING THE POSITIONS FROM THE 4D IMAGE WITH NON-NULL VALUES 
   posiffd1 <- which(ffdc[,,,1] != 0, arr.ind = TRUE)
   
-  
+  # browser()
   if(Test == "LTT"){
     #COMPUTING THE EVIDENCE FOR BRAIN ACTIVATION: VOXEL-WISE ANALYSIS
     set.seed(seed)

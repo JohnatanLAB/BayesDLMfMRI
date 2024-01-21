@@ -48,6 +48,8 @@ ffdGroupEvidenceFETS <- function(ffdGroup, covariates, m0=0, Cova=100,
                                 N1 = FALSE, Nsimu1=100, 
                                 Cutpos=30, r1, Test, mask, Ncores = NULL){
   
+  # browser()
+  
   if(is.logical(N1)) {
     if(N1==FALSE){N1 = dim(covariates)[1]}
   }

@@ -69,7 +69,7 @@ arma::rowvec Efit2(nsimu);
 
 //BEGIN(FIT THE DLM AND SIMULATE THE BOLD RESPONSE)
 for(int i = 0; i<N; i++){
-arma::rowvec F1 = X1.row(i);
+arma::rowvec F1 = X1.row(i); // 1xp1 (n_vars)
 arma::mat    a1  = m0;
 arma::mat    R1  = beta0*c0*beta0;
 arma::rowvec f1  = F1*m0;
@@ -147,18 +147,41 @@ Efit(i-cutpos) = norm(Y1.row(i) - f11)/norm(Y1.row(i));
 
 Theta1.col(i-cutpos) = m01.col(0);
 
+// ver donde el efecto, efectoi existe
 for(int kk=0; kk<p1; kk++){
-   if(m01(kk, 0)<0){Aux_bin2(kk, i-cutpos) = 0;}else{Aux_bin2(kk, i-cutpos) = 1;}
-   if(any(m01.row(kk)<0)){Aux_bin(kk, i-cutpos) = 0;}else{Aux_bin(kk, i-cutpos) = 1;}
+   if(m01(kk, 0)<0){ // aqui el toma el punto del centro
+      Aux_bin2(kk, i-cutpos) = 0;
+   }else{
+      Aux_bin2(kk, i-cutpos) = 1;
    }
+   if(any(m01.row(kk)<0)){ 
+      Aux_bin(kk, i-cutpos) = 0;
+   }else{
+      Aux_bin(kk, i-cutpos) = 1;
+   }
+}
 
 }
 
-
+// j es el indice de la simulacion aqui
+// N es el tiempo total
 Efit2(j) = median(Efit);
 
-for(int jj=0; jj<p1; jj++){if(sum(Aux_bin.row(jj))==(N-cutpos)){res1(jj, j) = 1;}else{res1(jj, j) = 0;}}
-for(int jj=0; jj<p1; jj++){if(sum(Aux_bin2.row(jj))==(N-cutpos)){res2(jj, j) = 1;}else{res2(jj, j) = 0;}}
+// verificar si el efecto se conserva a travez de toda la serie
+for(int jj=0; jj<p1; jj++){
+   if(sum(Aux_bin.row(jj))==(N-cutpos)){
+      res1(jj, j) = 1;
+   }else{
+      res1(jj, j) = 0;
+   }
+}
+for(int jj=0; jj<p1; jj++){
+   if(sum(Aux_bin2.row(jj))==(N-cutpos)){
+      res2(jj, j) = 1;
+   }else{
+      res2(jj, j) = 0;
+   }
+}
 ThetaOut.slice(j) = Theta1;
 
 
